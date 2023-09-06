@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 import { User } from "../types/UserType";
 
 //Components
-import BookedWorkouts from "../components/BookedWorkouts";
+
 import ShowWorkout from "../components/ShowWorkout";
 import { Workouts } from "../db/Workouts";
 import WorkoutList from "../components/ShowWorkout";
@@ -16,7 +16,7 @@ const UserPage = () => {
   return (
     <>
       <Header user={user} />
-      <BookedWorkouts />
+
       <WorkoutList />
     </>
   );

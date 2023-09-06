@@ -10,3 +10,7 @@ h1 {
     margin: 0 auto;
     padding: 5px 0;
 }
+
+.count {
+    font-weight: bolder;
+}
