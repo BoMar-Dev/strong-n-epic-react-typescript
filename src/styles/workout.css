@@ -14,3 +14,22 @@ h1 {
 .count {
     font-weight: bolder;
 }
+
+.weekdays {
+    text-align: center;
+}
+
+.weekdays button {
+    padding: 1.5em;
+    margin: 1em;
+}
+
+
+.booked-workout-container {
+    background-color: grey;
+    margin: 1em auto;
+    width: 250px;
+    text-align: center;
+    padding: .5em;
+    border-radius: 3px;
+}

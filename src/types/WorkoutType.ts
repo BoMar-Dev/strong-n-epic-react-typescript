@@ -4,7 +4,7 @@ const WeekDays: string[] = [
     "Monday", "Thuesday", "Wednesday"
 ]
 
-export type DaysOfTheWeek = "Monday" | "Thuesday" | "Wednesday"
+// export type DaysOfTheWeek = "Monday" | "Thuesday" | "Wednesday"
 
 export interface IWorkout {
     id: number;

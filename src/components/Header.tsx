@@ -1,5 +1,6 @@
 import React from "react";
 import { User } from "../types/UserType";
+import "../styles/header.css";
 
 type HeaderProps = {
   user: User;
@@ -7,7 +8,7 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps): JSX.Element => {
   return (
-    <div>
+    <div className="header-buttons">
       <button>
         Inloggad som : {props.user.role} {props.user.username}
       </button>
