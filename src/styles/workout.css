@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+}
+
+.workout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 5px 0;
+}

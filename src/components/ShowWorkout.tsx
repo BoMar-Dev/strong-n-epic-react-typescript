@@ -1,17 +1,19 @@
-import React from 'react'
+import React from "react";
+// Styles
+import "../styles/workout.css";
 
 //Types
-import { IWorkout } from '../types/WorkoutType'
-import { Workouts } from '../db/Workouts'
-
+import { IWorkout } from "../types/WorkoutType";
+import { Workouts } from "../db/Workouts";
 
 const WorkoutList: React.FC = () => {
   const renderWorkouts = () => {
     return Workouts.map((workout: IWorkout) => (
-      <div key={workout.id}>
-        <h2>{workout.name}</h2>
+      <div className="workout-container" key={workout.id}>
+        <h3>{workout.name}</h3>
         <p>Duration: {workout.time}</p>
         <p>day: {workout.weekDay}</p>
+        <button>Boka</button>
       </div>
     ));
   };
@@ -49,17 +51,18 @@ export default WorkoutList;
 
 // const ShowWorkout: React.FC = () => {
 
-  // const renderWorkouts = () => {
-  //   return Workouts.map((workout: IWorkout) => (
-  //     <div key={workout.id}>
-  //       <p>{workout.name}</p>
-  //       <p>{workout.day}</p>
-  //     </div>
-  //   ))
-  // }
-  // return (
-    // <div>
-        {/* <div>
+// const renderWorkouts = () => {
+//   return Workouts.map((workout: IWorkout) => (
+//     <div key={workout.id}>
+//       <p>{workout.name}</p>
+//       <p>{workout.day}</p>
+//     </div>
+//   ))
+// }
+// return (
+// <div>
+{
+  /* <div>
             <p>Du har <span>0</span> bokade pass</p>
             <p>v</p>
         </div>
@@ -68,10 +71,13 @@ export default WorkoutList;
                 <li>{} {} 4 sep kl.11.00</li>
                 <button>Avboka</button>
             </ul>
-        </div> */}
-        {/* {renderWorkouts()}
+        </div> */
+}
+{
+  /* {renderWorkouts()}
     </div>
   )
-} */}
+} */
+}
 
 // export default ShowWorkout
