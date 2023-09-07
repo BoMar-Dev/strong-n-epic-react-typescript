@@ -1,0 +1,1 @@
+export type TWeekdays = "Mån" | "Tis" | "Ons" | "Tors" | "Fre" | "Lör" | "Sön";

@@ -5,19 +5,18 @@ import "../styles/workout.css";
 
 //Types
 import { IWorkout } from "../types/WorkoutType";
-import { Workouts } from "../db/Workouts";
+// import { TWeekdays } from "../types/CalendarType";
 
-type ValuePiece = Date | null;
-type Value = ValuePiece | [ValuePiece, ValuePiece];
+// DB
+import { Workouts } from "../db/Workouts";
 
 
 const WorkoutList: React.FC = () => {
+  const [calendar, setCalendar] = useState();
   const [count, setCount] = useState(0);
-  const [workoutList, setWorkoutList] = useState<IWorkout[] | null> (null);
+  // const [workoutList, setWorkoutList] = useState<IWorkout[] | null> (null);
   const [date, setDate] = useState(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
-
-  // (locale, date) => formatDate(date, 'dd')
 
   const increment = () => {
     setCount((count) => count + 1);
@@ -42,7 +41,6 @@ const WorkoutList: React.FC = () => {
         <button onClick={() => {handledWorkoutChange(workout.name); increment()}}>
           Boka
         </button>
-        {/* <button onClick={increment}>Boka</button> */}
       </div>
     ));
   };
@@ -57,7 +55,10 @@ const WorkoutList: React.FC = () => {
       </div>
       <div>
         <ul className="selected-workout">
-          <li>{selectedWorkout}</li>
+          {selectedWorkout.map(item => (
+            <li>{item}</li>
+          ))}
+          {/* <li>{selectedWorkout}</li> */}
         </ul>
       </div>
       <div className="calendar-container">
