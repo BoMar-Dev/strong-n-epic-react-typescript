@@ -33,9 +33,7 @@ function CurrentWeekRow(props: RowProps) {
 
 const WorkoutList: React.FC = () => {
   const [selectedDay, setSelectedDay] = useState<Date>();
-  // const [calendar, setCalendar] = useState();
   const [count, setCount] = useState(0);
-  // const [workoutList, setWorkoutList] = useState<IWorkout[] | null> (null);
   const [date, setDate] = useState(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
 
@@ -56,6 +54,36 @@ const WorkoutList: React.FC = () => {
   ) : (
     <p>Please pick a day.</p>
   );
+
+  const handleDayClick = (day: Date) => {
+    setSelectedDay(day);
+  };
+
+  // const renderSpecificElement = () => {
+  //   // Check if selectedDay includes "FR" for Friday
+  //   console.log(selectedDay?.getDay());
+
+  //   if (
+  //     selectedDay &&
+  //     selectedDay.toLocaleDateString("en-US").includes("FR")
+  //   ) {
+  //     return <div>This is a Friday!</div>;
+  //   } else {
+  //     return null;
+  //   }
+  // };
+
+  const friday: number = 5;
+  const renderSpecificElement = () => {
+    // Check if selectedDay includes "FR" for Friday
+    console.log(selectedDay?.getDay());
+
+    if (selectedDay && selectedDay.getDay()) {
+      return <div>This is a Friday!</div>;
+    } else {
+      return null;
+    }
+  };
 
   const renderWorkouts = () => {
     return Workouts.map((workout: IWorkout) => (
@@ -93,16 +121,19 @@ const WorkoutList: React.FC = () => {
       <div className="calendar-container">
         <div>
           <DayPicker
+            selected={selectedDay}
+            onDayClick={handleDayClick}
             components={{ Row: CurrentWeekRow }}
             showOutsideDays
             mode="single"
-            selected={selectedDay}
             onSelect={setSelectedDay}
             footer={footer}
             weekStartsOn={1}
             locale={sv}
           />
         </div>
+        {renderSpecificElement()}
+        {/* {isFriday(selectedDay) && <div>This is a Friday!</div>} */}
         {/* <Calendar onChange={onChange} value={date} />
         {date.toString()} */}
       </div>

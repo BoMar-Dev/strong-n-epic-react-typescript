@@ -49,3 +49,14 @@ export const Workouts = [
     },
     
   ];
+
+  export const testWorkout = { // renderas ut IF FR = friday is clicked
+    id:1,
+    name:"Spela Fotboll",
+    tid : "NU"
+  }
+
+
+
+  
+  
