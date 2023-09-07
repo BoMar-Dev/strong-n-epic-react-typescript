@@ -33,3 +33,14 @@ h1 {
     padding: .5em;
     border-radius: 3px;
 }
+
+.selected-workout {
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+} 
+
+.calendar-container {
+    margin: 0 auto;
+    max-width: 600px;
+}
