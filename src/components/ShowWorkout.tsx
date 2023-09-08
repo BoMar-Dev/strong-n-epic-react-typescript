@@ -101,7 +101,6 @@ const WorkoutList: React.FC = () => {
           {selectedWorkout.map((item) => (
             <li>{item}</li>
           ))}
-          {/* <li>{selectedWorkout}</li> */}
         </ul>
       </div>
       <div className="calendar-container">
