@@ -2,6 +2,27 @@ h1 {
     text-align: center;
 }
 
+.DayPicker {
+    display: inline-block;
+    font-size: 1.5rem;
+    display: flex;
+    padding: 1em;
+  }
+
+  .rdp {
+    --rdp-cell-size: 53px; 
+    
+    --rdp-accent-color: #000000;
+    --rdp-background-color: #e3e3e3;
+    /* Switch to dark colors for dark themes */
+    --rdp-accent-color-dark: #3003e1;
+    --rdp-background-color-dark: #180270;
+    /* Outline border for focused elements */
+    --rdp-outline: 2px solid var(--rdp-accent-color);
+    /* Outline border for focused and selected elements */
+    --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
+  }
+
 .workout-container {
     display: flex;
     justify-content: space-between;

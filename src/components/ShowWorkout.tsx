@@ -34,7 +34,6 @@ function CurrentWeekRow(props: RowProps) {
 const WorkoutList: React.FC = () => {
   const [selectedDay, setSelectedDay] = useState<Date>();
   const [count, setCount] = useState(0);
-  const [date, setDate] = useState(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
 
   const increment = () => {
@@ -46,24 +45,22 @@ const WorkoutList: React.FC = () => {
   };
 
 
-
-  const footer = selectedDay ? (
-    <p>You selected {format(selectedDay, "PPP")}.</p>
-  ) : (
-    <p>Please pick a day.</p>
-  );
-
   const handleDayClick = (day: Date) => {
     setSelectedDay(day);
   };
 
+  // const footer = selectedDay ? (
+  //   <p>You selected {format(selectedDay, "PPP")}.</p>
+  // ) : (
+  //   <p>Please pick a day.</p>
+  // );
 
-  const renderSpecificElement = () => {
+  const renderTodaysWorkouts = () => {
  
     console.log(selectedDay?.getDay());
 
     if (selectedDay && selectedDay.getDay() === 5) {
-      return <div>{renderWorkouts()}</div>;
+      return <>{renderWorkouts()}</>;
     } else {
       return null;
     }
@@ -104,21 +101,25 @@ const WorkoutList: React.FC = () => {
       </div>
       <div className="calendar-container">
         <div>
-          <DayPicker
+          <DayPicker className="DayPicker"
             selected={selectedDay}
             onDayClick={handleDayClick}
             components={{ Row: CurrentWeekRow }}
             showOutsideDays
             mode="single"
             onSelect={setSelectedDay}
-            footer={footer}
+            // footer={footer}
             weekStartsOn={1}
             locale={sv}
           />
         </div>
-        {renderSpecificElement()}
+        <h1>Workout List</h1>
+        <div>
+          {renderTodaysWorkouts()}
+        </div>
+        
       </div>
-      <h1>Workout List</h1>
+      
       
     </div>
   );
