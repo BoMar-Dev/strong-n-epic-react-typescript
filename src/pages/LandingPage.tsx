@@ -8,6 +8,7 @@ import { FormEvent, useState } from "react";
 import UserPage from "./UserPage";
 import { ILogin } from '../types/UserType';
 import { Users } from '../db/UsersDB';
+import { log } from "console";
 
 
 const LandingPage: React.FC = () => {
@@ -15,14 +16,6 @@ const LandingPage: React.FC = () => {
   const [formPass, setformPass] = useState<string>("");
 
   const navigate = useNavigate();
-
-  // const goToUserPage = (): void => {
-  //   navigate("/user");
-  // };
-
-  // const goToAdminPage = (): void => {
-  //   navigate("/admin");
-  // };
 
   const checkUser = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -32,21 +25,18 @@ const LandingPage: React.FC = () => {
         localStorage.setItem('username', user.username)
         localStorage.setItem('role', user.role)
         console.log(user);
+
         if (user.role === "USER"){
           navigate('/user');
         } else if (user.role === "ADMIN") {
           navigate('/admin');
         } else {
-          console.log("no role for you!")
         }
+      } else {
+        console.log('neeeeeeej')
       }
     });
   }
-
-  // const ifAdmin = () => {
-  //   if (user.role)
-  // }
-
 
   return (
     <div>
@@ -57,8 +47,6 @@ const LandingPage: React.FC = () => {
         <input type="password" value={formPass} placeholder="Lösenord" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setformPass(e.target.value)} />
         <button type='submit' onClick={checkUser}>Logga in</button> 
       </form>
-      {/* <button onClick={goToUserPage}>Logga in som USER</button>
-      <button onClick={goToAdminPage}>Logga in som ADMIN</button> */}
     </div>
   );
 };
