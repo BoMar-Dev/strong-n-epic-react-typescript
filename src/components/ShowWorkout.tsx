@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
+
 
 // date-picker
 import { endOfWeek, isWithinInterval, startOfWeek, format } from "date-fns";
@@ -45,9 +45,7 @@ const WorkoutList: React.FC = () => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
   };
 
-  const onChange = (date: any) => {
-    setDate(date);
-  };
+
 
   const footer = selectedDay ? (
     <p>You selected {format(selectedDay, "PPP")}.</p>
@@ -59,27 +57,13 @@ const WorkoutList: React.FC = () => {
     setSelectedDay(day);
   };
 
-  // const renderSpecificElement = () => {
-  //   // Check if selectedDay includes "FR" for Friday
-  //   console.log(selectedDay?.getDay());
 
-  //   if (
-  //     selectedDay &&
-  //     selectedDay.toLocaleDateString("en-US").includes("FR")
-  //   ) {
-  //     return <div>This is a Friday!</div>;
-  //   } else {
-  //     return null;
-  //   }
-  // };
-
-  const friday: number = 5;
   const renderSpecificElement = () => {
-    // Check if selectedDay includes "FR" for Friday
+ 
     console.log(selectedDay?.getDay());
 
-    if (selectedDay && selectedDay.getDay()) {
-      return <div>This is a Friday!</div>;
+    if (selectedDay && selectedDay.getDay() === 5) {
+      return <div>{renderWorkouts()}</div>;
     } else {
       return null;
     }
@@ -133,12 +117,9 @@ const WorkoutList: React.FC = () => {
           />
         </div>
         {renderSpecificElement()}
-        {/* {isFriday(selectedDay) && <div>This is a Friday!</div>} */}
-        {/* <Calendar onChange={onChange} value={date} />
-        {date.toString()} */}
       </div>
       <h1>Workout List</h1>
-      {renderWorkouts()}
+      
     </div>
   );
 };
