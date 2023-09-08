@@ -14,7 +14,7 @@ const LandingPage: React.FC = () => {
   const [formName, setformName] = useState<string>("");
   const [formPass, setformPass] = useState<string>("");
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // const goToUserPage = (): void => {
   //   navigate("/user");
@@ -32,8 +32,14 @@ const LandingPage: React.FC = () => {
         localStorage.setItem('username', user.username)
         localStorage.setItem('role', user.role)
         console.log(user);
+        if (user.role === "USER"){
+          navigate('/user');
+        } else if (user.role === "ADMIN") {
+          navigate('/admin');
+        } else {
+          console.log("no role for you!")
+        }
       }
-
     });
   }
 
