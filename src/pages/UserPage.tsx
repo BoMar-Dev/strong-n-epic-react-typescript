@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Header } from "../components/Header";
 
-import { User } from "../types/UserType";
+import { IUser } from "../types/UserType";
+import { Users } from "../db/UsersDB";
 
 //Components
 
@@ -10,7 +11,7 @@ import { Workouts } from "../db/Workouts";
 import WorkoutList from "../components/ShowWorkout";
 
 const UserPage = () => {
-  const user: User = { username: "Greta", role: "USER" };
+  const user: IUser = { username: "Greta", role: "USER" };
   // const [workouts, setWorkouts] = useState<Workouts>({} as Workouts)
 
   return (

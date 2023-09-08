@@ -5,20 +5,19 @@ import { Routes, Route } from "react-router-dom";
 //Pages
 import LandingPage from "./pages/LandingPage";
 import UserPage from "./pages/UserPage";
+import AdminPage from "./pages/AdminPage";
 
-// Components
-import { Header } from "./components/Header";
 
-import { User } from "./types/UserType";
 
 const App: React.FC = () => {
   return (
     <>
-      {/* <Header /> */}
       <div className="App">
         <Routes>
+         
           <Route index element={<LandingPage />} />
           <Route path="/user" element={<UserPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </div>
     </>
