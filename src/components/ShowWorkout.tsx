@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 // date-picker
 import { endOfWeek, isWithinInterval, startOfWeek, format } from "date-fns";
 import { DayPicker, Row, RowProps } from "react-day-picker";
@@ -44,7 +43,6 @@ const WorkoutList: React.FC = () => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
   };
 
-
   const handleDayClick = (day: Date) => {
     setSelectedDay(day);
   };
@@ -56,7 +54,6 @@ const WorkoutList: React.FC = () => {
   // );
 
   const renderTodaysWorkouts = () => {
- 
     console.log(selectedDay?.getDay());
 
     if (selectedDay && selectedDay.getDay() === 5) {
@@ -85,11 +82,19 @@ const WorkoutList: React.FC = () => {
 
   return (
     <div>
-      <div className="booked-workout-container">
-        <p>
-          Du har <span className="count">{count}</span> bokade pass{" "}
-        </p>
-        <span>v</span>
+      <div>
+        {localStorage.getItem("role") === "USER" ? (
+          <div className="booked-workout-container">
+            <p>
+              Du har <span className="count">{count}</span> bokade pass{" "}
+            </p>
+            <span>v</span>
+          </div>
+        ) : (
+          <div className="admin-title">
+            <h2>Översikt</h2>
+          </div>
+        )}
       </div>
       <div>
         <ul className="selected-workout">
@@ -101,7 +106,8 @@ const WorkoutList: React.FC = () => {
       </div>
       <div className="calendar-container">
         <div>
-          <DayPicker className="DayPicker"
+          <DayPicker
+            className="DayPicker"
             selected={selectedDay}
             onDayClick={handleDayClick}
             components={{ Row: CurrentWeekRow }}
@@ -114,13 +120,8 @@ const WorkoutList: React.FC = () => {
           />
         </div>
         <h1>Workout List</h1>
-        <div>
-          {renderTodaysWorkouts()}
-        </div>
-        
+        <div>{renderTodaysWorkouts()}</div>
       </div>
-      
-      
     </div>
   );
 };
