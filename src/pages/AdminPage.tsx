@@ -1,17 +1,16 @@
-import React from 'react'
+import React from "react";
 
-import { IUser } from '../types/UserType';
-import { Header } from '../components/Header';
+import { IUser } from "../types/UserType";
+import { Header } from "../components/Header";
 
-import '../styles/workout.css';
+import "../styles/workout.css";
 
 const AdminPage = () => {
-    const user: IUser = { username: "Admina", role: "ADMIN" };
   return (
     <div>
-        <Header user={user} />
+      <Header />
     </div>
-  )
-}
+  );
+};
 
-export default AdminPage
+export default AdminPage;

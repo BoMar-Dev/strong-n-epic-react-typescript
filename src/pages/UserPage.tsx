@@ -11,12 +11,9 @@ import { Workouts } from "../db/Workouts";
 import WorkoutList from "../components/ShowWorkout";
 
 const UserPage = () => {
-  const user: IUser = { username: "Greta", role: "USER" };
-  // const [workouts, setWorkouts] = useState<Workouts>({} as Workouts)
-
   return (
     <>
-      <Header user={user} />
+      <Header />
 
       <WorkoutList />
     </>
