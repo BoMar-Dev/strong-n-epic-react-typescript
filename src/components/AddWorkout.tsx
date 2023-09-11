@@ -1,19 +1,6 @@
-import {
-  TWorkoutActivity,
-  TWeekdays,
-  TTime,
-  IWorkoutSchedule,
-} from "../types/WorkoutType";
-
-
 import { useState } from "react";
 
-
-// handleChange(event){
-//   this.setState({selectedOption: event.target.value }
-
-// const AddWorkout = ({ id, name, time, weekday }: IWorkoutSchedule) => {
-const AddWorkout = ({ setproduct, product }:any) => {
+const AddWorkout = ({setProducts, products}: any) => {
   const [selectWorkout, setSelectWorkout] = useState("");
   const [selectDay, setSelectDay] = useState("");
   const [selectTime, setSelectTime] = useState("");
@@ -26,8 +13,7 @@ const AddWorkout = ({ setproduct, product }:any) => {
   }
 
   const addProduct = () => {
-    setproduct([...product, newProduct]);
-    
+    setProducts([...products, newProduct]);
   };
 
   return (

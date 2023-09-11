@@ -17,10 +17,13 @@ import { IWorkout } from "../types/WorkoutType";
 // DB
 import { Workouts } from "../db/Workouts";
 
+
 const WorkoutList: React.FC = () => {
+  // const [products, setProducts] = useState(initialWorkoutDB);
   const [selectedDay, setSelectedDay] = useState<Date>();
   const [count, setCount] = useState(0);
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
+
   
 
   const increment = () => {
@@ -36,32 +39,33 @@ const WorkoutList: React.FC = () => {
   };
 
 
-  const renderTodaysWorkouts = () => {
-    console.log(selectedDay?.getDay());
+  // const renderTodaysWorkouts = () => {
+  //   console.log(selectedDay?.getDay());
 
-    if (selectedDay && selectedDay.getDay() === 5) {
-      return <>{renderWorkouts()}</>;
-    } else {
-      return null;
-    }
-  };
+  //   if (selectedDay && selectedDay.getDay() === 5) {
+  //     return <>{renderWorkouts()}</>;
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
-  const renderWorkouts = () => {
-    return Workouts.map((workout: IWorkout) => (
-      <div className="workout-container" key={workout.id}>
-        <h3>{workout.name}</h3>
-        <p>Time: {workout.time}</p>
-        <p>day: {workout.weekDay}</p>
-        <button
-          onClick={() => {
-            handledWorkoutChange(workout.name);
-            increment();
-          }}>
-          Boka
-        </button>
-      </div>
-    ));
-  };
+  // const renderWorkouts = () => {
+  //   return Workouts.map((workout: IWorkout) => (
+  //     <div className="workout-container" key={workout.id}>
+  //       <h3>{workout.name}</h3>
+  //       <p>Time: {workout.time}</p>
+  //       <p>day: {workout.weekDay}</p>
+  //       <button
+  //         onClick={() => {
+  //           handledWorkoutChange(workout.name);
+  //           increment();
+  //         }}>
+  //         Boka
+  //       </button>
+  //     </div>
+  //   ));
+  // };
+
 
   return (
     <div>
@@ -102,9 +106,28 @@ const WorkoutList: React.FC = () => {
           />
         </div>
         <h1>Workout List</h1>
-        <div>{renderTodaysWorkouts()}</div>
+        {/* <div>
+          {products.map((product) => {
+            return (
+              <div key={product.id}>
+                <h3>{product.name}</h3>
+                <p>{product.time}</p>
+                <p>{product.weekDay}</p>
+                {localStorage.getItem("role") === "USER" ? (
+                  <button>Boka</button >
+                ) : (
+                  <button>Ta bort pass</button >
+                )}
+                
+              </div>
+            )
+          })}
+        </div> */}
+        {/* <div>{renderTodaysWorkouts()}</div> */}
       </div>
+      {/* < AdminPage setproduct ={setProducts} product = {products}/> */}
     </div>
+    
   );
 };
 
