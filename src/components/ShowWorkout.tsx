@@ -18,7 +18,7 @@ import { IWorkout } from "../types/WorkoutType";
 import { Workouts } from "../db/Workouts";
 
 
-const WorkoutList: React.FC = () => {
+const WorkoutList = ({setProducts, products}: any) => {
   // const [products, setProducts] = useState(initialWorkoutDB);
   const [selectedDay, setSelectedDay] = useState<Date>();
   const [count, setCount] = useState(0);
@@ -107,7 +107,7 @@ const WorkoutList: React.FC = () => {
         </div>
         <h1>Workout List</h1>
         {/* <div>
-          {products.map((product) => {
+          {products.map((product:any) => {
             return (
               <div key={product.id}>
                 <h3>{product.name}</h3>
