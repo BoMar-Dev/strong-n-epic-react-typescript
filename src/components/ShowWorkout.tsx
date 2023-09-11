@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import {showCalendar} from "./Calendar"
 
-// date-picker
-import { endOfWeek, isWithinInterval, startOfWeek, format } from "date-fns";
+// Date-picker
+// import { endOfWeek, isWithinInterval, startOfWeek, format } from "date-fns";
 import { DayPicker, Row, RowProps } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { sv } from "date-fns/locale";
@@ -16,24 +17,11 @@ import { IWorkout } from "../types/WorkoutType";
 // DB
 import { Workouts } from "../db/Workouts";
 
-function CurrentWeekRow(props: RowProps) {
-  const isDateInCurrentWeek = (dateToCheck: Date) => {
-    const today = new Date();
-    const start = startOfWeek(today);
-    const end = endOfWeek(today);
-    return isWithinInterval(dateToCheck, { start, end });
-  };
-  const isNotCurrentWeek = props.dates.every(
-    (date) => !isDateInCurrentWeek(date)
-  );
-  if (isNotCurrentWeek) return <></>;
-  return <Row {...props} />;
-}
-
 const WorkoutList: React.FC = () => {
   const [selectedDay, setSelectedDay] = useState<Date>();
   const [count, setCount] = useState(0);
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
+  
 
   const increment = () => {
     setCount((count) => count + 1);
@@ -47,11 +35,6 @@ const WorkoutList: React.FC = () => {
     setSelectedDay(day);
   };
 
-  // const footer = selectedDay ? (
-  //   <p>You selected {format(selectedDay, "PPP")}.</p>
-  // ) : (
-  //   <p>Please pick a day.</p>
-  // );
 
   const renderTodaysWorkouts = () => {
     console.log(selectedDay?.getDay());
@@ -109,7 +92,7 @@ const WorkoutList: React.FC = () => {
             className="DayPicker"
             selected={selectedDay}
             onDayClick={handleDayClick}
-            components={{ Row: CurrentWeekRow }}
+            components={{ Row: showCalendar }}
             showOutsideDays
             mode="single"
             onSelect={setSelectedDay}
