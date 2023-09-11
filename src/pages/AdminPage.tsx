@@ -26,6 +26,7 @@ const AdminPage = ({setProducts, products}: any) => {
                 <p> {product.time}</p>
                 <p>{product.id}</p>
                 <p>{product.weekDay}</p>
+                
             </div>
           );
         })}

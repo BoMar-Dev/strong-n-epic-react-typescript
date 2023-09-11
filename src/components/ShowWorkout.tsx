@@ -16,80 +16,35 @@ import { IWorkout } from "../types/WorkoutType";
 
 // DB
 import { Workouts } from "../db/Workouts";
+import { log } from "console";
 
 
 const WorkoutList = ({setProducts, products}: any) => {
-  // const [products, setProducts] = useState(initialWorkoutDB);
   const [selectedDay, setSelectedDay] = useState<Date>();
-  const [count, setCount] = useState(0);
-  const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
 
   
-
-  const increment = () => {
-    setCount((count) => count + 1);
-  };
-
-  const handledWorkoutChange = (workoutName: string) => {
-    setSelectedWorkout([...selectedWorkout, workoutName]);
-  };
-
   const handleDayClick = (day: Date) => {
+    console.log(day);
+    
     setSelectedDay(day);
   };
 
 
-  // const renderTodaysWorkouts = () => {
-  //   console.log(selectedDay?.getDay());
+  const renderTodaysWorkouts = () => {
+    console.log(selectedDay?.getDay());
 
-  //   if (selectedDay && selectedDay.getDay() === 5) {
-  //     return <>{renderWorkouts()}</>;
-  //   } else {
-  //     return null;
-  //   }
-  // };
-
-  // const renderWorkouts = () => {
-  //   return Workouts.map((workout: IWorkout) => (
-  //     <div className="workout-container" key={workout.id}>
-  //       <h3>{workout.name}</h3>
-  //       <p>Time: {workout.time}</p>
-  //       <p>day: {workout.weekDay}</p>
-  //       <button
-  //         onClick={() => {
-  //           handledWorkoutChange(workout.name);
-  //           increment();
-  //         }}>
-  //         Boka
-  //       </button>
-  //     </div>
-  //   ));
-  // };
+    if (selectedDay && selectedDay.getDay() === 5) {
+      console.log(selectedDay.getDay());
+      
+      return <h1>Its a friday</h1>;
+    } else {
+      return null;
+    }
+  };
 
 
   return (
     <div>
-      <div>
-        {localStorage.getItem("role") === "USER" ? (
-          <div className="booked-workout-container">
-            <p>
-              Du har <span className="count">{count}</span> bokade pass{" "}
-            </p>
-            <span>v</span>
-          </div>
-        ) : (
-          <div className="admin-title">
-            <h2>Översikt</h2>
-          </div>
-        )}
-      </div>
-      <div>
-        <ul className="selected-workout">
-          {selectedWorkout.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </div>
       <div className="calendar-container">
         <div>
           <DayPicker
@@ -106,26 +61,8 @@ const WorkoutList = ({setProducts, products}: any) => {
           />
         </div>
         <h1>Workout List</h1>
-        {/* <div>
-          {products.map((product:any) => {
-            return (
-              <div key={product.id}>
-                <h3>{product.name}</h3>
-                <p>{product.time}</p>
-                <p>{product.weekDay}</p>
-                {localStorage.getItem("role") === "USER" ? (
-                  <button>Boka</button >
-                ) : (
-                  <button>Ta bort pass</button >
-                )}
-                
-              </div>
-            )
-          })}
-        </div> */}
-        {/* <div>{renderTodaysWorkouts()}</div> */}
+        <div>{renderTodaysWorkouts()}</div>
       </div>
-      {/* < AdminPage setproduct ={setProducts} product = {products}/> */}
     </div>
     
   );
