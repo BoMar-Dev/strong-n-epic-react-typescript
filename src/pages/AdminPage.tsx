@@ -43,12 +43,7 @@ const initialProducts: IWorkout[] = [
 const AdminPage = () => {
   const [products, setProducts] = useState(initialProducts);
 
-  // const newProduct: IWorkout = {
-  //   id: 1,
-  //   name: "Crossfit",
-  //   time: "11",
-  //   weekDay: ["Onsdag"],
-  // };
+
 
   // const addProduct = () => {
   //   setProducts([...products, newProduct]);
@@ -66,6 +61,8 @@ const AdminPage = () => {
               <div>
                 <h3> {product.name}</h3>
               </div>
+
+                <h3> {product.time}</h3>
               <div>
                 <p>{product.id}</p>
               </div>
@@ -74,7 +71,8 @@ const AdminPage = () => {
           );
         })}
       </div>
-      < AddWorkout id={5} name={"Zumba"} time={18.00} weekday={"Tisdag"}/>
+      {/* < AddWorkout id={5} name={"Zumba"} time={18.00} weekday={"Tisdag"}/> */}
+      < AddWorkout setproduct ={setProducts} product = {products}/>
       {/* <button onClick={addProduct}>Adding Product</button> */}
     </div>
   );

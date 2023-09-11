@@ -12,20 +12,29 @@ import { useState } from "react";
 // handleChange(event){
 //   this.setState({selectedOption: event.target.value }
 
-const AddWorkout = ({ id, name, time, weekday }: IWorkoutSchedule) => {
+// const AddWorkout = ({ id, name, time, weekday }: IWorkoutSchedule) => {
+const AddWorkout = ({ setproduct, product }:any) => {
   const [selectWorkout, setSelectWorkout] = useState("");
   const [selectDay, setSelectDay] = useState("");
   const [selectTime, setSelectTime] = useState("");
 
-  // const workoutOptions = [
-  //   { value: "Zumba", }
-  // ]
+  const newProduct: any = {
+    id: 5,
+    name: selectWorkout,
+    time: selectTime,
+    weekDay: selectDay,
+  }
+
+  const addProduct = () => {
+    setproduct([...product, newProduct]);
+    
+  };
 
   return (
     <div>
       <h1>{selectWorkout} {selectDay} {selectTime}</h1>
       <div className="choose-workout-container">
-        <select value={selectWorkout} 
+        <select 
         onChange={e => setSelectWorkout(e.target.value)} 
         className="choose-workout activity">
           <option selected disabled
@@ -37,7 +46,7 @@ const AddWorkout = ({ id, name, time, weekday }: IWorkoutSchedule) => {
           <option value="Spinning">Spinning</option>
         </select>
         {/* VÄLJ DAG: */}
-        <select value={selectDay} 
+        <select 
         className="choose-workout day" 
         onChange={e => setSelectDay(e.target.value)}
         >
@@ -52,7 +61,7 @@ const AddWorkout = ({ id, name, time, weekday }: IWorkoutSchedule) => {
           <option value="Lördag">Lördag</option>
           <option value="Söndag">Söndag</option>
         </select>
-        <select value={selectTime} 
+        <select
         onChange={e => setSelectTime(e.target.value)} 
         className="choose-workout time">
           <option selected disabled
@@ -63,7 +72,7 @@ const AddWorkout = ({ id, name, time, weekday }: IWorkoutSchedule) => {
           <option value="14:00">14:00</option>
           <option value="15:00">15:00</option>
         </select>
-        <button>Lägg till pass</button>
+        <button onClick={addProduct} >Lägg till pass</button>
       </div>
     </div>
   );
