@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Header } from "../components/Header";
 
-import { IUser } from "../types/UserType";
-import { Users } from "../db/UsersDB";
+// import { IUser } from "../types/UserType";
+// import { Users } from "../db/UsersDB";
 
 //Components
 
-import ShowWorkout from "../components/ShowWorkout";
-import { Workouts } from "../db/Workouts";
+// import ShowWorkout from "../components/ShowWorkout";
+// import { Workouts } from "../db/Workouts";
 import WorkoutList from "../components/ShowWorkout";
 import { IWorkout } from "../types/WorkoutType";
-import { log } from "console";
+
 
 const UserPage = ({setProducts, products}: any) => {
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
@@ -22,7 +22,25 @@ const UserPage = ({setProducts, products}: any) => {
 
   const handledWorkoutChange = (workoutName: string) => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
+    saveToLocalStorage(workoutName)
   };
+
+  const saveToLocalStorage = (workout:string) => {
+    // Retrieve the existing array from local storage (or create an empty array)
+    const existingWorkoutsJSON = localStorage.getItem("Workouts");
+    const existingWorkouts = existingWorkoutsJSON ? JSON.parse(existingWorkoutsJSON) : [];
+
+    console.log(existingWorkouts);
+    
+
+    existingWorkouts.push(workout);
+
+    // Save the updated array back to local storage
+    localStorage.setItem("Workouts", JSON.stringify(existingWorkouts));
+  };
+
+    
+
 
   const renderWorkouts = () => {
     return products.map((workout: IWorkout) => (

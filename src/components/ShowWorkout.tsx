@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {showCalendar} from "./Calendar"
 
 // Date-picker
 // import { endOfWeek, isWithinInterval, startOfWeek, format } from "date-fns";
-import { DayPicker, Row, RowProps } from "react-day-picker";
+import { DayPicker, } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { sv } from "date-fns/locale";
 
@@ -11,12 +11,12 @@ import { sv } from "date-fns/locale";
 import "../styles/workout.css";
 
 //Types
-import { IWorkout } from "../types/WorkoutType";
-// import { TWeekdays } from "../types/CalendarType";
+// import { IWorkout } from "../types/WorkoutType";
+// // import { TWeekdays } from "../types/CalendarType";
 
-// DB
-import { Workouts } from "../db/Workouts";
-import { log } from "console";
+// // DB
+// import { Workouts } from "../db/Workouts";
+
 
 
 const WorkoutList = ({setProducts, products}: any) => {
