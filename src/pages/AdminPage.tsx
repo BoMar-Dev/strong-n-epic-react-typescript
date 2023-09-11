@@ -43,38 +43,39 @@ const initialProducts: IWorkout[] = [
 const AdminPage = () => {
   const [products, setProducts] = useState(initialProducts);
 
-  const newProduct: IWorkout = {
-    id: 1,
-    name: "Crossfit",
-    time: "11",
-    weekDay: ["Onsdag"],
-  };
+  // const newProduct: IWorkout = {
+  //   id: 1,
+  //   name: "Crossfit",
+  //   time: "11",
+  //   weekDay: ["Onsdag"],
+  // };
 
-  const addProduct = () => {
-    setProducts([...products, newProduct]);
-  };
+  // const addProduct = () => {
+  //   setProducts([...products, newProduct]);
+  // };
 
   return (
     <div>
       <Header />
       <WorkoutList />
       {/* <AddWorkout id={activity.id} /> */}
-      <div className={"App-container"}>
+      <div className="App-container">
         {products.map((product) => {
           return (
-            <div className={"App-item"}>
+            <div className="App-item">
               <div>
-                <h3> {product.name}</h3>{" "}
+                <h3> {product.name}</h3>
               </div>
               <div>
                 <p>{product.id}</p>
               </div>
-              <div className={"Price-item"}>{product.weekDay}</div>
+              <div className="Price-item">{product.weekDay}</div>
             </div>
           );
         })}
       </div>
-      <button onClick={addProduct}>Adding Product</button>
+      < AddWorkout id={5} name={"Zumba"} time={18.00} weekday={"Tisdag"}/>
+      {/* <button onClick={addProduct}>Adding Product</button> */}
     </div>
   );
 };
