@@ -26,16 +26,6 @@ const LandingPage: React.FC = () => {
         localStorage.setItem("role", user.role);
         localStorage.setItem("workouts", JSON.stringify(user.workouts));
 
-        // if use === Blob
-
-        // save     =>      localStorage.setItem("username", user.username);
-        // localStorage.setItem("role", user.role);
-        // localStorage.setItem("workouts", JSON.stringify(user.workouts));
-
-        // till någon variabel eller state.
-
-        // nästa gång bob loggar in, retriev the state
-
         console.log(user);
 
         if (user.role === "USER") {
@@ -85,3 +75,45 @@ const LandingPage: React.FC = () => {
   );
 };
 export default LandingPage;
+
+// const checkUser = (event: React.MouseEvent<HTMLButtonElement>) => {
+//   event.preventDefault();
+
+// Retrieve existing user data from localStorage
+// const existingUserDataString = localStorage.getItem("userData");
+// const existingUserData = existingUserDataString
+//   ? JSON.parse(existingUserDataString)
+//   : [];
+
+// let foundUser = false;
+
+//   Users.forEach((user: IUser) => {
+//     if (formName === user.username && formPass === user.password) {
+//       foundUser = true;
+//       // Add the current user's data to the existing data
+//       existingUserData.push({
+//         username: user.username,
+//         role: user.role,
+//         workouts: user.workouts,
+//       });
+
+//       // Save the updated data structure back to localStorage
+//       localStorage.setItem("userData", JSON.stringify(existingUserData));
+
+//       console.log(user);
+
+//       if (user.role === "USER") {
+//         navigate("/user");
+//       } else if (user.role === "ADMIN") {
+//         navigate("/admin");
+//       } else {
+//         // Handle other roles if needed
+//       }
+//     }
+//   });
+
+//   if (!foundUser) {
+//     console.log("User not found");
+//   }
+// };
+// With this modification, each time a user logs in, their data is added to the userData array in localStorage, preserving the data for multiple users without overwriting it.
