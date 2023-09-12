@@ -14,6 +14,8 @@ const Header = (): JSX.Element => {
 
   const handleLogOut = () => {
     navigate("/");
+    localStorage.removeItem("username");
+    localStorage.removeItem("role");
   };
 
   return (

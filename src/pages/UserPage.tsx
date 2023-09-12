@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 
 // import { IUser } from "../types/UserType";
-// import { Users } from "../db/UsersDB";
+import { Users } from "../db/UsersDB";
 
 //Components
+import { getUsername } from "../util/user";
 
 // import ShowWorkout from "../components/ShowWorkout";
 // import { Workouts } from "../db/Workouts";
@@ -19,24 +20,49 @@ const UserPage = ({ setProducts, products }: any) => {
     setCount((count) => count + 1);
   };
 
+  useEffect(() => {
+    if (localStorage.getItem(`${getUsername()} workouts`)) {
+      // const workouts: string | null = localStorage.getItem(
+      //   `${getUsername()} workouts`
+      // );
+      console.log(localStorage.getItem(`${getUsername()} workouts`));
+    }
+  }, []);
+
   const handledWorkoutChange = (workoutName: string) => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
     saveToLocalStorage(workoutName);
   };
+  //   const AddWorkout = (workoutName: string) => {
+  //     setUserWorkout([...UserWorkout, workoutName]);
+  //     saveToLocalStorage(workoutName);
+  //   };
 
   const saveToLocalStorage = (workout: string) => {
+    if (localStorage.getItem(`${getUsername()} workouts`)) {
+      localStorage.setItem(
+        `${getUsername()} workouts`,
+        localStorage.getItem(`${getUsername()} workouts`) + "," + workout
+      );
+    } else {
+      localStorage.setItem(`${getUsername()} workouts`, workout);
+    }
     // Retrieve the existing array from local storage (or create an empty array)
-    const existingWorkoutsJSON = localStorage.getItem("workouts");
-    const existingWorkouts = existingWorkoutsJSON
-      ? JSON.parse(existingWorkoutsJSON)
-      : [];
 
-    console.log(existingWorkouts);
+    // const existingWorkoutsJSON = localStorage.getItem("workouts");
+    // const existingWorkouts = existingWorkoutsJSON
+    //   ? JSON.parse(existingWorkoutsJSON)
+    //   : [];
 
-    existingWorkouts.push(workout);
+    // console.log(existingWorkouts);
 
-    // Save the updated array back to local storage
-    localStorage.setItem("workouts", JSON.stringify(existingWorkouts));
+    // existingWorkouts.push(workout);
+
+    // // Save the updated array back to local storage
+    // localStorage.setItem(
+    //   `${localStorage.getItem("username")} workouts`,
+    //   JSON.stringify(existingWorkouts)
+    // );
   };
 
   const renderWorkouts = () => {
