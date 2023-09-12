@@ -1,8 +1,11 @@
 export type UserRole = "USER" | "ADMIN";
 
 export interface IUser {
-  role: UserRole;
+  
+  role: string;
   username: string;
+  password:string;
+  workouts: string[];
 }
 
 

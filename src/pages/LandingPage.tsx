@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { FormEvent, useState } from "react";
 import UserPage from "./UserPage";
 import { ILogin } from "../types/UserType";
+import { IUser } from "../types/UserType";
 import { Users } from "../db/UsersDB";
 import { log } from "console";
 
@@ -19,10 +20,22 @@ const LandingPage: React.FC = () => {
   const checkUser = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    Users.forEach((user) => {
+    Users.forEach((user: IUser) => {
       if (formName === user.username && formPass === user.password) {
         localStorage.setItem("username", user.username);
         localStorage.setItem("role", user.role);
+        localStorage.setItem("workouts", JSON.stringify(user.workouts));
+
+        // if use === Blob
+
+        // save     =>      localStorage.setItem("username", user.username);
+        // localStorage.setItem("role", user.role);
+        // localStorage.setItem("workouts", JSON.stringify(user.workouts));
+
+        // till någon variabel eller state.
+
+        // nästa gång bob loggar in, retriev the state
+
         console.log(user);
 
         if (user.role === "USER") {
@@ -36,6 +49,12 @@ const LandingPage: React.FC = () => {
       }
     });
   };
+
+  // const user: IUser = {
+  //   username: "Greta",
+  //   role: "USER",
+  //   bookedWorkouts: ["Zumba määään"],
+  // };
 
   return (
     <div>

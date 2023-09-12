@@ -11,8 +11,7 @@ import { Header } from "../components/Header";
 import WorkoutList from "../components/ShowWorkout";
 import { IWorkout } from "../types/WorkoutType";
 
-
-const UserPage = ({setProducts, products}: any) => {
+const UserPage = ({ setProducts, products }: any) => {
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
   const [count, setCount] = useState(0);
 
@@ -22,25 +21,23 @@ const UserPage = ({setProducts, products}: any) => {
 
   const handledWorkoutChange = (workoutName: string) => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
-    saveToLocalStorage(workoutName)
+    saveToLocalStorage(workoutName);
   };
 
-  const saveToLocalStorage = (workout:string) => {
+  const saveToLocalStorage = (workout: string) => {
     // Retrieve the existing array from local storage (or create an empty array)
-    const existingWorkoutsJSON = localStorage.getItem("Workouts");
-    const existingWorkouts = existingWorkoutsJSON ? JSON.parse(existingWorkoutsJSON) : [];
+    const existingWorkoutsJSON = localStorage.getItem("workouts");
+    const existingWorkouts = existingWorkoutsJSON
+      ? JSON.parse(existingWorkoutsJSON)
+      : [];
 
     console.log(existingWorkouts);
-    
 
     existingWorkouts.push(workout);
 
     // Save the updated array back to local storage
-    localStorage.setItem("Workouts", JSON.stringify(existingWorkouts));
+    localStorage.setItem("workouts", JSON.stringify(existingWorkouts));
   };
-
-    
-
 
   const renderWorkouts = () => {
     return products.map((workout: IWorkout) => (
@@ -59,13 +56,14 @@ const UserPage = ({setProducts, products}: any) => {
     ));
   };
 
-
   return (
     <>
       <Header />
       <div className="booked-workout-container">
-            <p>Du har <span className="count">{count}</span> bokade pass{" "}</p>
-            <span>v</span>
+        <p>
+          Du har <span className="count">{count}</span> bokade pass{" "}
+        </p>
+        <span>v</span>
       </div>
       <div>
         <ul className="selected-workout">
@@ -74,12 +72,10 @@ const UserPage = ({setProducts, products}: any) => {
           ))}
         </ul>
       </div>
-      <WorkoutList products={products} setProducts={setProducts}  />
+      <WorkoutList products={products} setProducts={setProducts} />
       {renderWorkouts()}
     </>
   );
 };
-
-
 
 export default UserPage;
