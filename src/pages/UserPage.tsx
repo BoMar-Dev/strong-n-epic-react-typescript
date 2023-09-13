@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
+import "../styles/workout.css";
+import { IoIosArrowDown,  } from "react-icons/io";
+import { AiOutlineFieldTime } from "react-icons/ai";
+
 
 // import { IUser } from "../types/UserType";
 import { Users } from "../db/UsersDB";
@@ -69,9 +73,9 @@ const UserPage = ({ setProducts, products }: any) => {
     return products.map((workout: IWorkout) => (
       <div className="workout-container" key={workout.id}>
         <h3>{workout.name}</h3>
-        <p>Time: {workout.time}</p>
+        <p>Time: {workout.time}  </p>
         <p>day: {workout.weekDay}</p>
-        <button
+        <button className="boka-btn"
           onClick={() => {
             handledWorkoutChange(workout.name);
             increment();
@@ -89,12 +93,12 @@ const UserPage = ({ setProducts, products }: any) => {
         <p>
           Du har <span className="count">{count}</span> bokade pass{" "}
         </p>
-        <span>v</span>
+        <span className="arrow-down"><IoIosArrowDown/></span>
       </div>
       <div>
         <ul className="selected-workout">
           {selectedWorkout.map((item) => (
-            <li>{item}</li>
+            <li className="selected-list">{item}</li>
           ))}
         </ul>
       </div>

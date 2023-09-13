@@ -4,6 +4,7 @@ import { IUser } from "../types/UserType";
 import { Users } from "../db/UsersDB";
 import "../styles/header.css";
 import { useNavigate } from "react-router-dom";
+import "../styles/workout.css";
 
 // type HeaderProps = {
 //   user: IUser;
@@ -24,10 +25,10 @@ const Header = (): JSX.Element => {
         Inloggad som : {props.user.role} {props.user.username}
       </button> */}
       <div>
-        Inloggad som : {localStorage.getItem("username")} - Med roll :{" "}
-        {localStorage.getItem("role")}
+      <p className="userrole-title">Användare: {localStorage.getItem("username")}, Roll:{" "}
+        {localStorage.getItem("role")}</p>
       </div>
-      <button onClick={handleLogOut}> Logga ut </button>
+      <button onClick={handleLogOut} className="logout-btn"> LOGGA UT </button>
     </div>
   );
 };

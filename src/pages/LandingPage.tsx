@@ -2,6 +2,7 @@
 //     h1: HTMLHeadingElement
 // }
 import "../styles/landingpage.css";
+// import frontImage from '../assets/HWPO.jpg'
 
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
@@ -87,14 +88,15 @@ const LandingPage: React.FC = () => {
   // };
 
   return (
-    <div>
+    <div className="landingpage-container">
+      {/* <img className="img" src={frontImage} alt="frontimage"></img> */}
       <h1>Strong n Epic</h1>
       <form className="form-container">
         <label>Logga in som användare/admin</label>
         <input
           type="text"
           value={formName}
-          placeholder="användarnamn"
+          placeholder="Användarnamn"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setformName(e.target.value)
           }
@@ -108,7 +110,7 @@ const LandingPage: React.FC = () => {
           }
         />
         <button type="submit" onClick={checkUser}>
-          Logga in
+          LOGGA IN
         </button>
       </form>
     </div>

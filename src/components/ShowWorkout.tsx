@@ -1,5 +1,9 @@
 import { useState } from "react";
 import {showCalendar} from "./Calendar"
+import { CiDumbbell, } from "react-icons/ci";
+
+
+
 
 // Date-picker
 // import { endOfWeek, isWithinInterval, startOfWeek, format } from "date-fns";
@@ -60,11 +64,15 @@ const WorkoutList = ({setProducts, products}: any) => {
             locale={sv}
           />
         </div>
-        <h1>Workout List</h1>
-        <div>{renderTodaysWorkouts()}</div>
       </div>
-    </div>
-    
+      <div className="icon-and-down">
+        <div className="dumbell-icon">
+            <CiDumbbell/>
+        </div>
+          <h1>Workout List</h1>
+          <div className="workouts-render">{renderTodaysWorkouts()}</div>
+      </div>
+      </div>
   );
 };
 
