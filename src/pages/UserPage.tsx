@@ -11,7 +11,7 @@ import { Users } from "../db/UsersDB";
 //Components
 import { getUsername } from "../util/user";
 
-// import ShowWorkout from "../components/ShowWorkout";
+// import ShowWorkout from "../components/ShowWorkout"
 // import { Workouts } from "../db/Workouts";
 import WorkoutList from "../components/ShowWorkout";
 import { IWorkout } from "../types/WorkoutType";
@@ -19,16 +19,26 @@ import { IWorkout } from "../types/WorkoutType";
 const UserPage = ({ setProducts, products }: any) => {
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
   const [count, setCount] = useState(0);
+  const [localStorageData, setLocalStorageData] = useState<string[]>([]);
 
   const increment = () => {
     setCount((count) => count + 1);
   };
 
+  // Saving the selected workout by clicking boka
+  useEffect(() => {
+        // Retrieve saved workouts from localStorage
+        const savedWorkouts = localStorage.getItem(`${getUsername()} workouts`);
+    
+        if (savedWorkouts) {
+          // Split the saved data by commas to create an array
+          const workoutsArray = savedWorkouts.split(",");
+          setLocalStorageData(workoutsArray);
+        }
+      }, [selectedWorkout]);
+
   useEffect(() => {
     if (localStorage.getItem(`${getUsername()} workouts`)) {
-      // const workouts: string | null = localStorage.getItem(
-      //   `${getUsername()} workouts`
-      // );
       console.log(localStorage.getItem(`${getUsername()} workouts`));
     }
   }, []);
@@ -37,10 +47,6 @@ const UserPage = ({ setProducts, products }: any) => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
     saveToLocalStorage(workoutName);
   };
-  //   const AddWorkout = (workoutName: string) => {
-  //     setUserWorkout([...UserWorkout, workoutName]);
-  //     saveToLocalStorage(workoutName);
-  //   };
 
   const saveToLocalStorage = (workout: string) => {
     if (localStorage.getItem(`${getUsername()} workouts`)) {
@@ -51,22 +57,6 @@ const UserPage = ({ setProducts, products }: any) => {
     } else {
       localStorage.setItem(`${getUsername()} workouts`, workout);
     }
-    // Retrieve the existing array from local storage (or create an empty array)
-
-    // const existingWorkoutsJSON = localStorage.getItem("workouts");
-    // const existingWorkouts = existingWorkoutsJSON
-    //   ? JSON.parse(existingWorkoutsJSON)
-    //   : [];
-
-    // console.log(existingWorkouts);
-
-    // existingWorkouts.push(workout);
-
-    // // Save the updated array back to local storage
-    // localStorage.setItem(
-    //   `${localStorage.getItem("username")} workouts`,
-    //   JSON.stringify(existingWorkouts)
-    // );
   };
 
   const renderWorkouts = () => {
@@ -86,6 +76,7 @@ const UserPage = ({ setProducts, products }: any) => {
     ));
   };
 
+
   return (
     <>
       <Header />
@@ -96,9 +87,16 @@ const UserPage = ({ setProducts, products }: any) => {
         <span className="arrow-down"><IoIosArrowDown/></span>
       </div>
       <div>
-        <ul className="selected-workout">
+        {/* <ul className="selected-workout">
           {selectedWorkout.map((item) => (
             <li className="selected-list">{item}</li>
+          ))}
+        </ul> */}
+        <ul className="selected-workout">
+          {localStorageData.map((item, index) => (
+            <li className="selected-list" key={index}>
+              {item}
+            </li>
           ))}
         </ul>
       </div>
@@ -109,3 +107,4 @@ const UserPage = ({ setProducts, products }: any) => {
 };
 
 export default UserPage;
+

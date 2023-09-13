@@ -9,6 +9,10 @@ h1 {
 
 }
 
+button {
+    border-style: none;
+}
+
 .DayPicker {
     display: inline-block;
     font-size: 1.5rem;
@@ -49,8 +53,9 @@ h1 {
 .boka-btn {
     padding: 2px;
     width: 3.5rem;
-    background-color: rgb(181, 211, 188);
+    background-color: rgba(22, 106, 117, 0.691);
     border-radius: 3px;
+    color: white;
 }
 
 .time-icon{
