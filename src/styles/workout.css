@@ -90,7 +90,7 @@ button {
 }
 
 .selected-workout {
-    background-color: rgb(93, 189, 116);
+    /* background-color: rgb(93, 189, 116); */
     display: flex;
     flex-direction: column;
 } 
@@ -99,7 +99,7 @@ button {
     font-size: 900;
     margin: .1em .4em ;
     padding: .5em;
-    
+    list-style: none;
 }
 
 .arrow-down{

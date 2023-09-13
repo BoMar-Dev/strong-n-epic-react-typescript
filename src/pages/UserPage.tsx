@@ -20,6 +20,7 @@ const UserPage = ({ setProducts, products }: any) => {
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
   const [count, setCount] = useState(0);
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
+  const [visible, setVisible] = useState(false);
 
   const increment = () => {
     setCount((count) => count + 1);
@@ -76,6 +77,10 @@ const UserPage = ({ setProducts, products }: any) => {
     ));
   };
 
+  const handleToggle = () => {
+    setVisible((current) => !current);
+  };
+
 
   return (
     <>
@@ -84,7 +89,18 @@ const UserPage = ({ setProducts, products }: any) => {
         <p>
           Du har <span className="count">{count}</span> bokade pass{" "}
         </p>
-        <span className="arrow-down"><IoIosArrowDown/></span>
+        <button className="arrow-down" onClick={handleToggle}><IoIosArrowDown/></button>
+        <div>
+        {
+          visible && <ul className="selected-workout">
+          {localStorageData.map((item, index) => (
+            <li className="selected-list" key={index}>
+              {item}
+            </li>
+          ))}
+        </ul>
+        }
+        </div>
       </div>
       <div>
         {/* <ul className="selected-workout">
@@ -92,13 +108,17 @@ const UserPage = ({ setProducts, products }: any) => {
             <li className="selected-list">{item}</li>
           ))}
         </ul> */}
-        <ul className="selected-workout">
+
+        {/* {
+          visible && <ul className="selected-workout">
           {localStorageData.map((item, index) => (
             <li className="selected-list" key={index}>
               {item}
             </li>
           ))}
         </ul>
+        } */}
+        
       </div>
       <WorkoutList products={products} setProducts={setProducts} />
       {renderWorkouts()}

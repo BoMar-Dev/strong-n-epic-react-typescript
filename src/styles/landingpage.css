@@ -39,6 +39,14 @@
     border-style: none;
 }
 
+.form-container input:focus {
+    outline: rgb(255, 126, 109);
+    /* outline-width: 0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none; */
+}
+
 
 .form-container button {
     padding: .5em;
