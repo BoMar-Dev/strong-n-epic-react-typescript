@@ -38,17 +38,23 @@ const initialWorkoutDB: IWorkout[] = [
 ];
 
 const App: React.FC = () => {
-  const [products, setProducts] = useState(initialWorkoutDB);
-
+  const [products, setProducts] = useState<IWorkout[]>(initialWorkoutDB);
 
   return (
     <>
       <div className="App">
         <Routes>
-         
           <Route index element={<LandingPage />} />
-          <Route path="/user" element={<UserPage products={products} setProducts={setProducts} />} />
-          <Route path="/admin" element={<AdminPage products={products} setProducts={setProducts} />} />
+          <Route
+            path="/user"
+            element={<UserPage products={products} setProducts={setProducts} />}
+          />
+          <Route
+            path="/admin"
+            element={
+              <AdminPage products={products} setProducts={setProducts} />
+            }
+          />
         </Routes>
       </div>
     </>

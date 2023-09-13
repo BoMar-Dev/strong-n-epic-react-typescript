@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddWorkout = ({setProducts, products}: any) => {
+const AddWorkout = ({ setProducts, products }: any) => {
   const [selectWorkout, setSelectWorkout] = useState("");
   const [selectDay, setSelectDay] = useState("");
   const [selectTime, setSelectTime] = useState("");
@@ -10,7 +10,7 @@ const AddWorkout = ({setProducts, products}: any) => {
     name: selectWorkout,
     time: selectTime,
     weekDay: selectDay,
-  }
+  };
 
   const addProduct = () => {
     setProducts([...products, newProduct]);
@@ -18,13 +18,14 @@ const AddWorkout = ({setProducts, products}: any) => {
 
   return (
     <div>
-      <h1>{selectWorkout} {selectDay} {selectTime}</h1>
+      <h1>
+        {selectWorkout} {selectDay} {selectTime}
+      </h1>
       <div className="choose-workout-container">
-        <select 
-        onChange={e => setSelectWorkout(e.target.value)} 
-        className="choose-workout activity">
-          <option selected disabled
-          >
+        <select
+          onChange={(e) => setSelectWorkout(e.target.value)}
+          className="choose-workout activity">
+          <option selected disabled>
             Välj aktivitet
           </option>
           <option value="Zumba">Zumba</option>
@@ -32,10 +33,9 @@ const AddWorkout = ({setProducts, products}: any) => {
           <option value="Spinning">Spinning</option>
         </select>
         {/* VÄLJ DAG: */}
-        <select 
-        className="choose-workout day" 
-        onChange={e => setSelectDay(e.target.value)}
-        >
+        <select
+          className="choose-workout day"
+          onChange={(e) => setSelectDay(e.target.value)}>
           <option selected disabled>
             Välj dag
           </option>
@@ -48,17 +48,18 @@ const AddWorkout = ({setProducts, products}: any) => {
           <option value="Söndag">Söndag</option>
         </select>
         <select
-        onChange={e => setSelectTime(e.target.value)} 
-        className="choose-workout time">
-          <option selected disabled
-          >
+          onChange={(e) => setSelectTime(e.target.value)}
+          className="choose-workout time">
+          <option selected disabled>
             Välj tid
           </option>
           <option value="12:00">12:00</option>
           <option value="14:00">14:00</option>
           <option value="15:00">15:00</option>
         </select>
-        <button onClick={addProduct} >Lägg till pass</button>
+        <button onClick={addProduct} className="confirm-btn">
+          OK
+        </button>
       </div>
     </div>
   );
