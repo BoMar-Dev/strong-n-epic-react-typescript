@@ -17,6 +17,7 @@ import WorkoutList from "../components/ShowWorkout";
 import { IWorkout } from "../types/WorkoutType";
 
 const UserPage = ({ setProducts, products }: any) => {
+  const [selectedDay, setSelectedDay] = useState<Date>(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
   const [count, setCount] = useState(0);
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
@@ -68,7 +69,7 @@ const UserPage = ({ setProducts, products }: any) => {
         <p>day: {workout.weekDay}</p>
         <button className="boka-btn"
           onClick={() => {
-            handledWorkoutChange(workout.name);
+            handledWorkoutChange(workout.name + selectedDay?.toLocaleDateString()) ;
             increment();
           }}>
           Boka
@@ -103,12 +104,6 @@ const UserPage = ({ setProducts, products }: any) => {
         </div>
       </div>
       <div>
-        {/* <ul className="selected-workout">
-          {selectedWorkout.map((item) => (
-            <li className="selected-list">{item}</li>
-          ))}
-        </ul> */}
-
         {/* {
           visible && <ul className="selected-workout">
           {localStorageData.map((item, index) => (
@@ -118,9 +113,8 @@ const UserPage = ({ setProducts, products }: any) => {
           ))}
         </ul>
         } */}
-        
       </div>
-      <WorkoutList products={products} setProducts={setProducts} />
+      <WorkoutList products={products} setProducts={setProducts} selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
       {renderWorkouts()}
     </>
   );

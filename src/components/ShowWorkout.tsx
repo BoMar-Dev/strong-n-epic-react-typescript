@@ -21,17 +21,37 @@ import "../styles/workout.css";
 // // DB
 // import { Workouts } from "../db/Workouts";
 
+import { getUsername } from "../util/user";
 
 
-const WorkoutList = ({setProducts, products}: any) => {
-  const [selectedDay, setSelectedDay] = useState<Date>();
+const WorkoutList = ({setProducts, products, selectedDay, setSelectedDay}: any) => {
+  
+  const [localStorageData, setLocalStorageData] = useState<string[]>([]);
 
   
   const handleDayClick = (day: Date) => {
-    console.log(day);
+    console.log(`just so you now its ${day}`);
+
+    const chosenDay = day
     
-    setSelectedDay(day);
+    setSelectedDay(chosenDay)
+
+
+   
+  
+
+    const getDates = localStorage.getItem(`${getUsername()} workouts`);
+
+    if (getDates) {
+      const datesResults = getDates?.split(",");
+      setLocalStorageData(datesResults)
+    }
   };
+
+
+  // const renderUserBookedWorkouts = () => {
+  //   (localStorage.getItem(`${getUsername()} workouts`))
+  // }
 
 
   const renderTodaysWorkouts = () => {
@@ -39,6 +59,7 @@ const WorkoutList = ({setProducts, products}: any) => {
 
     if (selectedDay && selectedDay.getDay() === 5) {
       console.log(selectedDay.getDay());
+
       
       return <h1>Its a friday</h1>;
     } else {
@@ -71,6 +92,7 @@ const WorkoutList = ({setProducts, products}: any) => {
         </div>
           <h1>Workout List</h1>
           <div className="workouts-render">{renderTodaysWorkouts()}</div>
+          <p></p>
       </div>
       </div>
   );
