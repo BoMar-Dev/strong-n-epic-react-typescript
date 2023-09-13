@@ -24,7 +24,7 @@ const UserPage = ({ setProducts, products }: any) => {
   const [visible, setVisible] = useState(false);
 
   const increment = () => {
-    setCount((count) => count + 1);
+    setCount((count) => count + 1)
   };
 
   // Saving the selected workout by clicking boka
@@ -36,6 +36,8 @@ const UserPage = ({ setProducts, products }: any) => {
           // Split the saved data by commas to create an array
           const workoutsArray = savedWorkouts.split(",");
           setLocalStorageData(workoutsArray);
+          // setCount((count) => count + 1)
+          increment();
         }
       }, [selectedWorkout]);
 
@@ -69,8 +71,8 @@ const UserPage = ({ setProducts, products }: any) => {
         <p>day: {workout.weekDay}</p>
         <button className="boka-btn"
           onClick={() => {
-            handledWorkoutChange(workout.name + selectedDay?.toLocaleDateString()) ;
-            increment();
+            handledWorkoutChange(workout.name + selectedDay?.toLocaleDateString() ) ;
+            // increment();
           }}>
           Boka
         </button>
