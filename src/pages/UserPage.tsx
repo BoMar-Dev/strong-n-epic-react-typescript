@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import "../styles/workout.css";
-import { IoIosArrowDown,  } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineFieldTime } from "react-icons/ai";
-
 
 // import { IUser } from "../types/UserType";
 import { Users } from "../db/UsersDB";
@@ -24,22 +23,22 @@ const UserPage = ({ setProducts, products }: any) => {
   const [visible, setVisible] = useState(false);
 
   const increment = () => {
-    setCount((count) => count + 1)
+    setCount((count) => count + 1);
   };
 
   // Saving the selected workout by clicking boka
   useEffect(() => {
-        // Retrieve saved workouts from localStorage
-        const savedWorkouts = localStorage.getItem(`${getUsername()} workouts`);
-    
-        if (savedWorkouts) {
-          // Split the saved data by commas to create an array
-          const workoutsArray = savedWorkouts.split(",");
-          setLocalStorageData(workoutsArray);
-          // setCount((count) => count + 1)
-          increment();
-        }
-      }, [selectedWorkout]);
+    // Retrieve saved workouts from localStorage
+    const savedWorkouts = localStorage.getItem(`${getUsername()} workouts`);
+
+    if (savedWorkouts) {
+      // Split the saved data by commas to create an array
+      const workoutsArray = savedWorkouts.split(",");
+      setLocalStorageData(workoutsArray);
+      // setCount((count) => count + 1)
+      increment();
+    }
+  }, [selectedWorkout]);
 
   useEffect(() => {
     if (localStorage.getItem(`${getUsername()} workouts`)) {
@@ -67,11 +66,15 @@ const UserPage = ({ setProducts, products }: any) => {
     return products.map((workout: IWorkout) => (
       <div className="workout-container" key={workout.id}>
         <h3>{workout.name}</h3>
-        <p>Time: {workout.time}  </p>
-        <p>day: {workout.weekDay}</p>
-        <button className="boka-btn"
+        <p>Time: {workout.time} </p>
+        <button
+          className="boka-btn"
           onClick={() => {
-            handledWorkoutChange(workout.name + selectedDay?.toLocaleDateString() ) ;
+            handledWorkoutChange(
+              `${workout.name} ${selectedDay?.toLocaleDateString()} kl: ${
+                workout.time
+              }`
+            );
             // increment();
           }}>
           Boka
@@ -84,7 +87,6 @@ const UserPage = ({ setProducts, products }: any) => {
     setVisible((current) => !current);
   };
 
-
   return (
     <>
       <Header />
@@ -92,17 +94,19 @@ const UserPage = ({ setProducts, products }: any) => {
         <p>
           Du har <span className="count">{count}</span> bokade pass{" "}
         </p>
-        <button className="arrow-down" onClick={handleToggle}><IoIosArrowDown/></button>
+        <button className="arrow-down" onClick={handleToggle}>
+          <IoIosArrowDown />
+        </button>
         <div>
-        {
-          visible && <ul className="selected-workout">
-          {localStorageData.map((item, index) => (
-            <li className="selected-list" key={index}>
-              {item}
-            </li>
-          ))}
-        </ul>
-        }
+          {visible && (
+            <ul className="selected-workout">
+              {localStorageData.map((item, index) => (
+                <li className="selected-list" key={index}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
       <div>
@@ -116,11 +120,15 @@ const UserPage = ({ setProducts, products }: any) => {
         </ul>
         } */}
       </div>
-      <WorkoutList products={products} setProducts={setProducts} selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+      <WorkoutList
+        products={products}
+        setProducts={setProducts}
+        selectedDay={selectedDay}
+        setSelectedDay={setSelectedDay}
+      />
       {renderWorkouts()}
     </>
   );
 };
 
 export default UserPage;
-
