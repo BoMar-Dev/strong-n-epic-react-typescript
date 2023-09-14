@@ -24,18 +24,29 @@ button {
     padding: 1em;
   }
 
+  .DayPicker .rdp-day_selected {
+    /* background-color: #03a2c2; */
+    background-color: #05597b;
+  }
+  .DayPicker .rdp-day_selected:hover {
+    /* background-color: #03a2c2; */
+    background-color: #16749a;
+  }
+
+
+
   .rdp {
     --rdp-cell-size: 53px; 
-    
     --rdp-accent-color: #000000;
     --rdp-background-color: #e3e3e3;
     /* Switch to dark colors for dark themes */
-    --rdp-accent-color-dark: #3003e1;
-    --rdp-background-color-dark: #180270;
+    --rdp-accent-color-dark: #df0caa;
+    --rdp-background-color-dark: #4f3c9c;
     /* Outline border for focused elements */
     --rdp-outline: 2px solid var(--rdp-accent-color);
     /* Outline border for focused and selected elements */
     --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
+    
   }
 
 .workout-container {
@@ -49,15 +60,12 @@ button {
     margin-left: 15px;
     margin-right: 15px;
     margin-top: 10px;
-    
-    
-   
-    
+
 }
 .boka-btn {
-    padding: 2px;
+    padding: .5em;
     width: 3.5rem;
-    background-color: rgba(22, 106, 117, 0.691);
+    background-color: #05597b;
     border-radius: 3px;
     color: white;
 }
@@ -65,8 +73,6 @@ button {
 .time-icon{
     font-weight: bold;
     font-size: 1.2rem;
-    
-    
 }
 
 .count {
@@ -82,15 +88,16 @@ button {
     margin: 1em;
 }
 
-
 .booked-workout-container {
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
+    background-color: #05597b;
+    color: #fff;
     margin: 1em auto;
-    width: 250px;
+    width: 300px;
     text-align: center;
     padding: .5em;
     border-radius: 3px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 
 .selected-workout {
@@ -100,7 +107,7 @@ button {
 } 
 
 .selected-list {
-    font-size: 900;
+    font-size: .9rem;
     margin: .1em .4em ;
     padding: .5em;
     list-style: none;
@@ -108,6 +115,9 @@ button {
 
 .arrow-down{
     font-size: 1.6rem;
+    background-color: transparent;
+    padding-top: .5em;
+    color: #fff;
 }
 
 .calendar-container div{

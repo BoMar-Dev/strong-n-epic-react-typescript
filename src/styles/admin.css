@@ -1,0 +1,66 @@
+.admin-title {
+    margin: 1em 0;
+}
+
+.overview-container {
+    font-size: 0.9rem;
+    line-height: 1.9rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #05597b;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px;
+
+}
+
+.overview-container p {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.span-user{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.registered-users-container {
+    margin-bottom: 1em;
+}
+
+.booked-workout-container2{
+    margin-bottom: 1em;
+}
+
+.add-bookings{
+    background-color: #f1907f;
+    padding: 1em;
+}
+
+.add-bookings h3 {
+    text-align: center;
+    padding: .5em 0 1em 0;
+}
+
+
+.choose-workout {
+    margin: .2em;
+    padding: .3em;
+    border-style: none;
+    cursor: pointer;
+}
+
+
+.confirm-btn {
+    background-color: #05597b;
+    color: #fff;
+    padding: .5em;
+    border-radius: 3px;
+    margin: 0.5em;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.confirm-btn:hover {
+    background-color: #09678c;
+}
+

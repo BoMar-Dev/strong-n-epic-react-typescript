@@ -6,6 +6,7 @@
 
 import { useState } from "react";
 import { IWorkout } from "../types/InterfaceAndType";
+import '../styles/admin.css'
 
 interface AddWorkoutProps {
   products: IWorkout[];
@@ -30,9 +31,9 @@ const AddWorkout = ({ setProducts, products }: AddWorkoutProps) => {
 
   return (
     <div>
-      <h1>
+      {/* <p>
         {selectWorkout} {selectDay} {selectTime}
-      </h1>
+      </p> */}
       <div className="choose-workout-container">
         <select
           onChange={(e) => setSelectWorkout(e.target.value)}
@@ -75,7 +76,7 @@ const AddWorkout = ({ setProducts, products }: AddWorkoutProps) => {
           <option value="18:00">18:00</option>
         </select>
         <button onClick={addProduct} className="confirm-btn">
-          OK
+          Lägg till
         </button>
       </div>
     </div>
