@@ -5,10 +5,10 @@ import { Header } from "../components/Header";
 import AddWorkout from "../components/AddWorkout";
 import {Users} from '../db/UsersDB';
 
-// types
+// Types
 import { IWorkout } from "../types/InterfaceAndType";
 
-// styles
+// Styles
 import "../styles/workout.css";
 
 interface UserWorkouts {
@@ -48,6 +48,7 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
       <Header />
       <h1>Översikt</h1>
       <h3>Registrerade användare:</h3>
+      <ul>
       {Users.map((user, index) => {
         return (
           <li key={`nameid-${index}`}>
@@ -55,6 +56,7 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
           </li>
         )
       })}
+      </ul>
       <h3>Bokade pass:</h3>
       {isBookedBookings ? (
       <ul>
@@ -83,12 +85,11 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
         <h3>Lägga till ett pass:</h3>
         <AddWorkout products={products} setProducts={setProducts} />
         <div className="workoutlist-container">
-          {products.map((product) => {
+          {products.map((product, index) => {
             return (
-              <div className="workoutlist-item" key={product.id}>
+              <div className="workoutlist-item" key={index}>
                 <h4> {product.name}</h4>
                 <p> {product.time}</p>
-                <p>{product.weekDay}</p>
               </div>
             );
           })}

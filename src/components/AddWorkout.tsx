@@ -1,18 +1,22 @@
 import { useState } from "react";
+import { IWorkout } from "../types/InterfaceAndType";
 
-const AddWorkout = ({ setProducts, products }: any) => {
+interface AddWorkoutProps {
+  products: IWorkout[];
+  setProducts: (newProducts: IWorkout[]) => void;
+}
+
+const AddWorkout = ({ setProducts, products }: AddWorkoutProps) => {
   const [selectWorkout, setSelectWorkout] = useState("");
   const [selectDay, setSelectDay] = useState("");
   const [selectTime, setSelectTime] = useState("");
  
-
-  const newProduct: any = {
+  const newProduct: AddWorkoutProps | IWorkout = {
     name: selectWorkout,
     time: selectTime,
-    // weekDay: selectDay,
   };
 
-  const addProduct = () => {
+  const addProduct = () =>  {
     setProducts([...products, newProduct])
     
     localStorage.setItem("updatedWorkouts", JSON.stringify(newProduct))

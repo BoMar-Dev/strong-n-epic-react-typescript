@@ -21,13 +21,13 @@ const UserPage = ({ setProducts, products }: UserPageProps) => {
   const [visible, setVisible] = useState(false);
   const [workoutCount, setWorkoutCount] = useState(0);
 
-  // Saving the selected workout by clicking boka
+ 
   useEffect(() => {
-    // Retrieve saved workouts from localStorage
+ 
     const savedWorkouts = localStorage.getItem(`${getUsername()} workouts`);
     
     if (savedWorkouts) {
-      // Split the saved data by commas to create an array
+  
       const workoutsArray = savedWorkouts.split(",");
       setLocalStorageData(workoutsArray);
       setWorkoutCount(workoutsArray.length) 
@@ -59,8 +59,8 @@ const UserPage = ({ setProducts, products }: UserPageProps) => {
   };
 
   const renderWorkouts = () => {
-    return products.map((workout: IWorkout) => (
-      <div className="workout-container" key={workout.id}>
+    return products.map((workout: IWorkout, index) => (
+      <div className="workout-container" key={index}>
         <h3>{workout.name}</h3>
         <p>Time: {workout.time} </p>
         <button

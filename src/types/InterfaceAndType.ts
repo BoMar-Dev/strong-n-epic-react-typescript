@@ -1,10 +1,10 @@
 
 // Interfaces
 export interface IWorkout {
-    id: number;
+    // id: number;
     name: string;
     time: string;
-    weekDay: string[];
+    // weekDay: string[];
   }
 
   export interface IUser {
@@ -14,22 +14,10 @@ export interface IWorkout {
   }
 
 
-//   export interface AdminPageProps {
-    
-//     products: IWorkout[];
-//     setProducts: (newProducts: IWorkout[]) => void;
-//   }
-
-//   export interface UserPageProps {
-//     products: IWorkout[];
-//     setProducts: (newProducts: IWorkout[]) => void;
-//   }
-
   export interface UserWorkouts {
     username: string;
     workoutList: [];
   }
-
 
   // Type
  export type UserRole = "USER" | "ADMIN";

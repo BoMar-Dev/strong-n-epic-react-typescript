@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { showCalendar } from "./Calendar";
 import { CiDumbbell } from "react-icons/ci";
+import { IWorkout } from "../types/InterfaceAndType";
 
 // Date-picker
 import { DayPicker } from "react-day-picker";
@@ -11,23 +12,27 @@ import { sv } from "date-fns/locale";
 import "../styles/workout.css";
 import { getUsername } from "../util/user";
 
+interface WorkoutListProps {
+  products: IWorkout[];
+  setProducts: (newProducts: IWorkout[]) => void;
+  selectedDay: Date;
+  setSelectedDay:React.Dispatch<React.SetStateAction<Date>>
+}
+
 const WorkoutList = ({
   setProducts,
   products,
   selectedDay,
   setSelectedDay,
-}: any) => {
+}: WorkoutListProps) => {
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
 
   const handleDayClick = (day: Date) => {
     console.log(`just so you now its ${day}`);
-
     const chosenDay = day;
-
     setSelectedDay(chosenDay);
 
     const getDates = localStorage.getItem(`${getUsername()} workouts`);
-
     if (getDates) {
       const datesResults = getDates?.split(",");
       setLocalStorageData(datesResults);
@@ -45,7 +50,7 @@ const WorkoutList = ({
             components={{ Row: showCalendar }}
             showOutsideDays
             mode="single"
-            onSelect={setSelectedDay}
+            onSelect={() => setSelectedDay}
             // footer={footer}
             weekStartsOn={1}
             locale={sv}
