@@ -23,11 +23,11 @@ interface UserWorkouts {
 }
 
 interface AdminPageProps {
-  products: IWorkout[];
-  setProducts: (newProducts: IWorkout[]) => void;
+  workoutList: IWorkout[];
+  setWorkoutList: (newProducts: IWorkout[]) => void;
 }
 
-const AdminPage = ({ setProducts, products }: AdminPageProps) => {
+const AdminPage = ({ setWorkoutList, workoutList }: AdminPageProps) => {
   const [userWorkouts, setUserWorkouts] = useState<UserWorkouts[]>([]);
   const [showIfBooked, setShowIfBooked] = useState(false)
   const ref = useRef(false);
@@ -98,13 +98,13 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
       <div className="add-bookings">
         <h3>Lägg till ett pass:</h3>
         <div className="line"></div>
-        <AddWorkout products={products} setProducts={setProducts} />
+        <AddWorkout workoutList={workoutList} setWorkoutList={setWorkoutList} />
         <div className="workoutlist-container">
-          {products.map((product, index) => {
+          {workoutList.map((list, index) => {
             return (
               <div className="workoutlist-item" key={index}>
-                <h4> {product.name}</h4>
-                <p> {product.time}</p>
+                <h4> {list.name}</h4>
+                <p> {list.time}</p>
               </div>
             );
           })}

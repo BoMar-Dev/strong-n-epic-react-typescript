@@ -9,31 +9,28 @@ import { IWorkout } from "../types/InterfaceAndType";
 import '../styles/admin.css'
 
 interface AddWorkoutProps {
-  products: IWorkout[];
-  setProducts: (newProducts: IWorkout[]) => void;
+  workoutList: IWorkout[];
+  setWorkoutList: (newWorkout: IWorkout[]) => void;
 }
 
-const AddWorkout = ({ setProducts, products }: AddWorkoutProps) => {
+const AddWorkout = ({ setWorkoutList, workoutList }: AddWorkoutProps) => {
   const [selectWorkout, setSelectWorkout] = useState("");
   const [selectDay, setSelectDay] = useState("");
   const [selectTime, setSelectTime] = useState("");
  
-  const newProduct: AddWorkoutProps | IWorkout = {
+  const newWorkout: AddWorkoutProps | IWorkout = {
     name: selectWorkout,
     time: selectTime,
   };
 
-  const addProduct = () =>  {
-    setProducts([...products, newProduct])
+  const addNewWorkout = () =>  {
+    setWorkoutList([...workoutList, newWorkout])
     
-    localStorage.setItem("updatedWorkouts", JSON.stringify(newProduct))
+    localStorage.setItem("updatedWorkouts", JSON.stringify(newWorkout))
   }
 
   return (
     <div>
-      {/* <p>
-        {selectWorkout} {selectDay} {selectTime}
-      </p> */}
       <div className="choose-workout-container">
         <select
           onChange={(e) => setSelectWorkout(e.target.value)}
@@ -75,7 +72,7 @@ const AddWorkout = ({ setProducts, products }: AddWorkoutProps) => {
           <option value="17:00">17:00</option>
           <option value="18:00">18:00</option>
         </select>
-        <button onClick={addProduct} className="confirm-btn">
+        <button onClick={addNewWorkout} className="confirm-btn">
           Lägg till
         </button>
       </div>

@@ -44,7 +44,6 @@ const Calendar = ({ selectedDay,setSelectedDay }: WorkoutListProps) => {
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
 
   const handleDayClick = (day: Date) => {
-    console.log(`just so you now its ${day}`);
     const chosenDay = day;
     setSelectedDay(chosenDay);
 
@@ -67,7 +66,6 @@ const Calendar = ({ selectedDay,setSelectedDay }: WorkoutListProps) => {
             showOutsideDays
             mode="single"
             onSelect={() => setSelectedDay}
-            // footer={footer}
             weekStartsOn={1}
             locale={sv}
           />

@@ -15,28 +15,12 @@ import AdminPage from "./pages/AdminPage";
 // Types
 import { IWorkout } from "./types/InterfaceAndType";
 
+// DB
+import { initialWorkoutDB } from "./db/workoutsDB";
 
-const initialWorkoutDB: IWorkout[] = [
-  {
-    name: "Zumba",
-    time: "11:00",
-  },
-  {
-    name: "Body Pump",
-    time: "12:00",
-  },
-  {
-    name: "Spinning",
-    time: "15:00",
-  },
-  {
-    name: "Kettlebell",
-    time: "18:00",
-  },
-];
 
 const App: React.FC = () => {
-  const [products, setProducts] = useState<IWorkout[]>(initialWorkoutDB);
+  const [workoutList, setWorkoutList] = useState<IWorkout[]>(initialWorkoutDB);
 
   return (
     <>
@@ -46,12 +30,12 @@ const App: React.FC = () => {
           />
           <Route
             path="/user"
-            element={<UserPage products={products} setProducts={setProducts} />}
+            element={<UserPage workoutList={workoutList} setWorkoutList={setWorkoutList} />}
           />
           <Route
             path="/admin"
             element={
-              <AdminPage products={products} setProducts={setProducts} />
+              <AdminPage workoutList={workoutList} setWorkoutList={setWorkoutList} />
             }
           />
         </Routes>

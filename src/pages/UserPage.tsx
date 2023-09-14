@@ -16,11 +16,11 @@ import Calendar from "../components/Calendar";
 import { IWorkout } from "../types/InterfaceAndType";
 
 interface UserPageProps {
-  products: IWorkout[];
-  setProducts: (newProducts: IWorkout[]) => void;
+  workoutList: IWorkout[];
+  setWorkoutList: (newworkoutList: IWorkout[]) => void;
 }
 
-const UserPage = ({ products }: UserPageProps) => {
+const UserPage = ({ workoutList }: UserPageProps) => {
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
@@ -58,7 +58,7 @@ const UserPage = ({ products }: UserPageProps) => {
   };
 
   const renderWorkouts = () => {
-    return products.map((workout: IWorkout, index) => (
+    return workoutList.map((workout: IWorkout, index) => (
       <div className="workout-container" key={index}>
         <h3>{workout.name}</h3>
         <p>Time: {workout.time} </p>
