@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+
+/**
+ * Page is rendering dates and workouts for Users to book
+ * Chosen workout is rendering under "bokade pass in a list"
+ */
+
+import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import "../styles/workout.css";
 import { IoIosArrowDown } from "react-icons/io";
 //Components
 import { getUsername } from "../util/user";
-import WorkoutList from "../components/ShowWorkout";
+import Calendar from "../components/Calendar";
 
 // types
 import { IWorkout } from "../types/InterfaceAndType";
@@ -14,7 +20,7 @@ interface UserPageProps {
   setProducts: (newProducts: IWorkout[]) => void;
 }
 
-const UserPage = ({ setProducts, products }: UserPageProps) => {
+const UserPage = ({ products }: UserPageProps) => {
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
@@ -23,7 +29,6 @@ const UserPage = ({ setProducts, products }: UserPageProps) => {
 
  
   useEffect(() => {
- 
     const savedWorkouts = localStorage.getItem(`${getUsername()} workouts`);
     
     if (savedWorkouts) {
@@ -106,12 +111,7 @@ const UserPage = ({ setProducts, products }: UserPageProps) => {
       </div>
       <div>
       </div>
-      <WorkoutList
-        products={products}
-        setProducts={setProducts}
-        selectedDay={selectedDay}
-        setSelectedDay={setSelectedDay}
-      />
+      <Calendar selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>
       {renderWorkouts()}
     </>
   );

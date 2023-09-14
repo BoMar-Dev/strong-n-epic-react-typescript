@@ -1,3 +1,9 @@
+/**
+ * Admin usage only. 
+ * Gets overview about registered users.
+ * Gets information about what workouts Users have booked.
+ */
+
 import { useState, useEffect, useRef } from "react";
 
 //Components

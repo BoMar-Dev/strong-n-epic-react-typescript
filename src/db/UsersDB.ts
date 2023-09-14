@@ -1,3 +1,7 @@
+/**
+ * all registered users
+ */
+
 import { IUser } from "../types/InterfaceAndType";
 
 export const Users: IUser[] = [

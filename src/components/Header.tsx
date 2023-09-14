@@ -1,5 +1,10 @@
+/**
+ * This page is always rendering to Userpage and Adminpage
+ * Rendering Users role and button for "sign out"
+ * Sign 
+ */
+
 import React from "react";
-import { useState, useEffect } from "react";
 import "../styles/header.css";
 import { useNavigate } from "react-router-dom";
 import "../styles/workout.css";

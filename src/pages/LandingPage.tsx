@@ -1,3 +1,8 @@
+/**
+ * Rendering the first page off the application
+ * Admin and Users can log in with their passwords
+ */
+
 import "../styles/landingpage.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

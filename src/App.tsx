@@ -1,3 +1,8 @@
+/**
+ * Creating mockup for workout activities and time.
+ * Router for landingpage, userpage and adminpage
+ */
+
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 // import "./styles/app.css";

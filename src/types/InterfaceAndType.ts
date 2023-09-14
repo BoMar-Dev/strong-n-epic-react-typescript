@@ -1,5 +1,5 @@
-
 // Interfaces
+
 export interface IWorkout {
     // id: number;
     name: string;
@@ -12,7 +12,6 @@ export interface IWorkout {
     username: string;
     password:string;
   }
-
 
   export interface UserWorkouts {
     username: string;

@@ -1,3 +1,9 @@
+/**
+ * Admin usage only.
+ * Adding new workout activity to localstorage.
+ * Rendering workout activity below from .
+ */
+
 import { useState } from "react";
 import { IWorkout } from "../types/InterfaceAndType";
 
