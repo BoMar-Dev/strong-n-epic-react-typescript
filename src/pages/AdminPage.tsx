@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Header } from "../components/Header";
 import WorkoutList from "../components/ShowWorkout";
 import AddWorkout from "../components/AddWorkout";
+import {Users} from '../db/UsersDB';
 
 import "../styles/workout.css";
 import { IWorkout, TWorkoutActivity } from "../types/WorkoutType";
@@ -45,8 +46,13 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
       <Header />
       <h1>Översikt</h1>
       <h3>Registrerade användare:</h3>
-      <p>användare bob</p>
-      <p>användare Ullamaj:</p>
+      {Users.map((user, index) => {
+        return (
+          <li key={`nameid-${index}`}>
+            <p>Användare: {user.username} ({user.role})</p>
+          </li>
+        )
+      })}
       <h3>Bokade pass:</h3>
       {isBookedBookings ? (
       <ul>
