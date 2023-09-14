@@ -42,7 +42,8 @@ const App: React.FC = () => {
     <>
       <div className="App">
         <Routes>
-          <Route index element={<LandingPage />} />
+          <Route index element={<LandingPage />} 
+          />
           <Route
             path="/user"
             element={<UserPage products={products} setProducts={setProducts} />}

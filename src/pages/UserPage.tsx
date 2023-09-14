@@ -24,7 +24,7 @@ const UserPage = ({ products }: UserPageProps) => {
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
-  const [visible, setVisible] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const [workoutCount, setWorkoutCount] = useState(0);
 
  
@@ -37,20 +37,14 @@ const UserPage = ({ products }: UserPageProps) => {
       setLocalStorageData(workoutsArray);
       setWorkoutCount(workoutsArray.length) 
     }
-
-    
   }, [selectedWorkout]);
   
 
   const handledWorkoutChange = (workoutName: string) => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
     saveToLocalStorage(workoutName);
-
-    if (workoutCount >= 1) {
-      
-      console.log("you have booked this already!");
-    }
   };
+
 
   const saveToLocalStorage = (workout: string) => {
     if (localStorage.getItem(`${getUsername()} workouts`)) {
@@ -84,7 +78,7 @@ const UserPage = ({ products }: UserPageProps) => {
   };
 
   const handleToggle = () => {
-    setVisible((current) => !current);
+    setToggle((current) => !current);
   };
 
   return (
@@ -98,7 +92,7 @@ const UserPage = ({ products }: UserPageProps) => {
           <IoIosArrowDown />
         </button>
         <div>
-          {visible && (
+          {toggle && (
             <ul className="selected-workout">
               {localStorageData.map((item, index) => (
                 <li className="selected-list" key={index}>

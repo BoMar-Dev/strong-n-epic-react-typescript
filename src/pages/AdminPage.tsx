@@ -29,7 +29,7 @@ interface AdminPageProps {
 
 const AdminPage = ({ setProducts, products }: AdminPageProps) => {
   const [userWorkouts, setUserWorkouts] = useState<UserWorkouts[]>([]);
-  const [isBookedBookings, setIsBookedBookings] = useState(false)
+  const [showIfBooked, setShowIfBooked] = useState(false)
   const ref = useRef(false);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
             workoutList: localStorage.getItem(key)!.split(",") as [],
           };
           setUserWorkouts((oldvalue) => [...oldvalue, user]);
-          setIsBookedBookings(true);
+          setShowIfBooked(true);
         }
       }
     }
@@ -69,7 +69,7 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
       
     <div className="booked-workout-container2">
       <h3 >Bokade pass:</h3>
-      {isBookedBookings ? (
+      {showIfBooked ? (
       <ul>
         {userWorkouts.map((user, index) => {
         return (
