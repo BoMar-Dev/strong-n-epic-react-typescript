@@ -43,7 +43,7 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
       <Header />
       <h1>Översikt</h1>
       {/* <WorkoutList /> */}
-      <p>-----här vill vi se alla bokade pass-----</p>
+      <p>Inga pass är bokade...</p>
       <ul>
         {userWorkouts.map((user, index) => {
           return (
@@ -62,20 +62,17 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
           );
         })}
       </ul>
-      {/* <p>Bobs workouts: ARRAY</p>
-      <p>Ullamajs workouts: ARRAY</p> */}
       <div>
         <br></br>
         <br></br>
         <h3>Lägga till ett pass:</h3>
         <AddWorkout products={products} setProducts={setProducts} />
-        <div className="App-container">
+        <div className="workoutlist-container">
           {products.map((product: any) => {
             return (
-              <div className="App-item">
-                <h3> {product.name}</h3>
+              <div className="workoutlist-item" key={product.id}>
+                <h4> {product.name}</h4>
                 <p> {product.time}</p>
-                <p>{product.id}</p>
                 <p>{product.weekDay}</p>
               </div>
             );

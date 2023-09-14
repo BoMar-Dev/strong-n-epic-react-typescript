@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import "../styles/workout.css";
 import { IoIosArrowDown } from "react-icons/io";
-import { AiOutlineFieldTime } from "react-icons/ai";
-
 // import { IUser } from "../types/UserType";
 import { Users } from "../db/UsersDB";
-
 //Components
 import { getUsername } from "../util/user";
-
 // import ShowWorkout from "../components/ShowWorkout"
 // import { Workouts } from "../db/Workouts";
 import WorkoutList from "../components/ShowWorkout";
 import { IWorkout } from "../types/WorkoutType";
+
+
 
 const UserPage = ({ setProducts, products }: any) => {
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
@@ -21,8 +19,6 @@ const UserPage = ({ setProducts, products }: any) => {
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
   const [visible, setVisible] = useState(false);
   const [workoutCount, setWorkoutCount] = useState(0);
-
-  
 
   // Saving the selected workout by clicking boka
   useEffect(() => {
@@ -38,11 +34,11 @@ const UserPage = ({ setProducts, products }: any) => {
     }
   }, [selectedWorkout]);
 
-  useEffect(() => {
-    if (localStorage.getItem(`${getUsername()} workouts`)) {
-      console.log(localStorage.getItem(`${getUsername()} workouts`));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem(`${getUsername()} workouts`)) {
+  //     console.log(localStorage.getItem(`${getUsername()} workouts`));
+  //   }
+  // }, []);
 
   const handledWorkoutChange = (workoutName: string) => {
     setSelectedWorkout([...selectedWorkout, workoutName]);

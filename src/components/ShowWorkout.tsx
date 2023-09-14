@@ -3,17 +3,12 @@ import { showCalendar } from "./Calendar";
 import { CiDumbbell } from "react-icons/ci";
 
 // Date-picker
-// import { endOfWeek, isWithinInterval, startOfWeek, format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { sv } from "date-fns/locale";
 
 // Styles
 import "../styles/workout.css";
-
-//Types
-// import { IWorkout } from "../types/WorkoutType";
-// // import { TWeekdays } from "../types/CalendarType";
 
 // // DB
 // import { Workouts } from "../db/Workouts";
@@ -47,17 +42,17 @@ const WorkoutList = ({
   //   (localStorage.getItem(`${getUsername()} workouts`))
   // }
 
-  const renderTodaysWorkouts = () => {
-    console.log(selectedDay?.getDay());
+  // const renderTodaysWorkouts = () => {
+  //   console.log(selectedDay?.getDay());
 
-    if (selectedDay && selectedDay.getDay() === 5) {
-      console.log(selectedDay.getDay());
+  //   if (selectedDay && selectedDay.getDay() === 5) {
+  //     console.log(selectedDay.getDay());
 
-      return <h1>Its a friday</h1>;
-    } else {
-      return null;
-    }
-  };
+  //     return <h1>Its a friday</h1>;
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   return (
     <div>
@@ -82,7 +77,7 @@ const WorkoutList = ({
           <CiDumbbell />
         </div>
         <h1>Workout List</h1>
-        <div className="workouts-render">{renderTodaysWorkouts()}</div>
+        {/* <div className="workouts-render">{renderTodaysWorkouts()}</div> */}
         <p></p>
       </div>
     </div>

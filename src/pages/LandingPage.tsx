@@ -1,9 +1,4 @@
-// interface HeaderProps {
-//     h1: HTMLHeadingElement
-// }
 import "../styles/landingpage.css";
-// import frontImage from '../assets/HWPO.jpg'
-
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import UserPage from "./UserPage";

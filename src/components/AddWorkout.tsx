@@ -4,17 +4,19 @@ const AddWorkout = ({ setProducts, products }: any) => {
   const [selectWorkout, setSelectWorkout] = useState("");
   const [selectDay, setSelectDay] = useState("");
   const [selectTime, setSelectTime] = useState("");
+ 
 
   const newProduct: any = {
-    id: 5,
     name: selectWorkout,
     time: selectTime,
     weekDay: selectDay,
   };
 
   const addProduct = () => {
-    setProducts([...products, newProduct]);
-  };
+    setProducts([...products, newProduct])
+    
+    localStorage.setItem("updatedWorkouts", JSON.stringify(newProduct))
+  }
 
   return (
     <div>
@@ -28,6 +30,7 @@ const AddWorkout = ({ setProducts, products }: any) => {
           <option selected disabled>
             Välj aktivitet
           </option>
+          <option value="Yoga">Yoga</option>
           <option value="Zumba">Zumba</option>
           <option value="Kettlebell">Kettlebell</option>
           <option value="Spinning">Spinning</option>
@@ -54,8 +57,12 @@ const AddWorkout = ({ setProducts, products }: any) => {
             Välj tid
           </option>
           <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
           <option value="14:00">14:00</option>
           <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
         </select>
         <button onClick={addProduct} className="confirm-btn">
           OK
