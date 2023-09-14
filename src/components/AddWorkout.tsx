@@ -9,7 +9,7 @@ const AddWorkout = ({ setProducts, products }: any) => {
   const newProduct: any = {
     name: selectWorkout,
     time: selectTime,
-    weekDay: selectDay,
+    // weekDay: selectDay,
   };
 
   const addProduct = () => {
@@ -42,13 +42,13 @@ const AddWorkout = ({ setProducts, products }: any) => {
           <option selected disabled>
             Välj dag
           </option>
-          <option value="Måndag">Måndag</option>
-          <option value="Tisdag">Tisdag</option>
-          <option value="Onsdag">Onsdag</option>
-          <option value="Torsdag">Torsdag</option>
-          <option value="Fredag">Fredag</option>
-          <option value="Lördag">Lördag</option>
-          <option value="Söndag">Söndag</option>
+          <option>Måndag</option>
+          <option>Tisdag</option>
+          <option>Onsdag</option>
+          <option>Torsdag</option>
+          <option>Fredag</option>
+          <option>Lördag</option>
+          <option>Söndag</option>
         </select>
         <select
           onChange={(e) => setSelectTime(e.target.value)}

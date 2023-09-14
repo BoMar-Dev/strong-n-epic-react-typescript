@@ -20,6 +20,7 @@ interface AdminPageProps {
 
 const AdminPage = ({ setProducts, products }: AdminPageProps) => {
   const [userWorkouts, setUserWorkouts] = useState<UserWorkouts[]>([]);
+  const [isBookedBookings, setIsBookedBookings] = useState(false)
   const ref = useRef(false);
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
             workoutList: localStorage.getItem(key)!.split(",") as [],
           };
           setUserWorkouts((oldvalue) => [...oldvalue, user]);
+          setIsBookedBookings(true);
         }
       }
     }
@@ -42,26 +44,31 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
     <div>
       <Header />
       <h1>Översikt</h1>
-      {/* <WorkoutList /> */}
-      <p>Inga pass är bokade...</p>
+      <h3>Registrerade användare:</h3>
+      <p>användare bob</p>
+      <p>användare Ullamaj:</p>
+      <h3>Bokade pass:</h3>
+      {isBookedBookings ? (
       <ul>
         {userWorkouts.map((user, index) => {
-          return (
-            <li key={`nameid-${index}`}>
-              <p>{user.username}</p>
-              <ul>
-                {user.workoutList.map((workout, wIndex) => {
-                  return (
-                    <li key={`workout-${index}${wIndex}`}>
-                      <p>{workout}</p>
-                    </li>
-                  );
-                })}
-              </ul>
-            </li>
-          );
-        })}
-      </ul>
+        return (
+          <li key={`nameid-${index}`}>
+            <p>Användare: {user.username}</p>
+            <ul>
+              {user.workoutList.map((workout, wIndex) => {
+                return (
+                  <li key={`workout-${index}${wIndex}`}>
+                    <p>Bokat pass: {workout}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
+      ) : ( <p>Inga pass är bokade...</p> )
+      } 
       <div>
         <br></br>
         <br></br>
