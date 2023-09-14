@@ -18,25 +18,23 @@ import { IWorkout } from "../types/WorkoutType";
 const UserPage = ({ setProducts, products }: any) => {
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
-  const [count, setCount] = useState(0);
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
   const [visible, setVisible] = useState(false);
+  const [workoutCount, setWorkoutCount] = useState(0);
 
-  const increment = () => {
-    setCount((count) => count + 1);
-  };
+  
 
   // Saving the selected workout by clicking boka
   useEffect(() => {
     // Retrieve saved workouts from localStorage
     const savedWorkouts = localStorage.getItem(`${getUsername()} workouts`);
-
+    
     if (savedWorkouts) {
       // Split the saved data by commas to create an array
       const workoutsArray = savedWorkouts.split(",");
       setLocalStorageData(workoutsArray);
-      // setCount((count) => count + 1)
-      increment();
+      setWorkoutCount(workoutsArray.length)
+      
     }
   }, [selectedWorkout]);
 
@@ -49,6 +47,7 @@ const UserPage = ({ setProducts, products }: any) => {
   const handledWorkoutChange = (workoutName: string) => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
     saveToLocalStorage(workoutName);
+    
   };
 
   const saveToLocalStorage = (workout: string) => {
@@ -75,7 +74,7 @@ const UserPage = ({ setProducts, products }: any) => {
                 workout.time
               }`
             );
-            // increment();
+           
           }}>
           Boka
         </button>
@@ -92,7 +91,7 @@ const UserPage = ({ setProducts, products }: any) => {
       <Header />
       <div className="booked-workout-container">
         <p>
-          Du har <span className="count">{count}</span> bokade pass{" "}
+          Du har <span className="count">{workoutCount}</span> bokade pass{" "}
         </p>
         <button className="arrow-down" onClick={handleToggle}>
           <IoIosArrowDown />
