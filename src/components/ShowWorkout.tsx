@@ -9,10 +9,6 @@ import { sv } from "date-fns/locale";
 
 // Styles
 import "../styles/workout.css";
-
-// // DB
-// import { Workouts } from "../db/Workouts";
-
 import { getUsername } from "../util/user";
 
 const WorkoutList = ({
@@ -38,22 +34,6 @@ const WorkoutList = ({
     }
   };
 
-  // const renderUserBookedWorkouts = () => {
-  //   (localStorage.getItem(`${getUsername()} workouts`))
-  // }
-
-  // const renderTodaysWorkouts = () => {
-  //   console.log(selectedDay?.getDay());
-
-  //   if (selectedDay && selectedDay.getDay() === 5) {
-  //     console.log(selectedDay.getDay());
-
-  //     return <h1>Its a friday</h1>;
-  //   } else {
-  //     return null;
-  //   }
-  // };
-
   return (
     <div>
       <div className="calendar-container">
@@ -77,8 +57,6 @@ const WorkoutList = ({
           <CiDumbbell />
         </div>
         <h1>Workout List</h1>
-        {/* <div className="workouts-render">{renderTodaysWorkouts()}</div> */}
-        <p></p>
       </div>
     </div>
   );

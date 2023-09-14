@@ -1,8 +1,8 @@
 import "../styles/landingpage.css";
 import { useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import UserPage from "./UserPage";
-import { ILogin, IUser } from "../types/UserType";
+import { IUser } from "../types/UserType";
 import { Users } from "../db/UsersDB";
 import { setDefaultResultOrder } from "dns";
 
@@ -11,27 +11,6 @@ const LandingPage: React.FC = () => {
   const [formPass, setformPass] = useState<string>("");
 
   const navigate = useNavigate();
-
-  // const saveUser = ({ username, password, role }: IUser): void => {
-  //   let data = localStorage.getItem("userData");
-
-  //   if (data !== null) {
-  //     const dataJSON: IUser[] = JSON.parse(data);
-  //     dataJSON.push({ username, password, role });
-  //     localStorage.setItem("userData", JSON.stringify(dataJSON));
-  //   } else {
-  //     throw new Error("users is null");
-  //   }
-  // };
-
-  // const getUsers = (): IUser[] => {
-  //   const data = localStorage.getItem("userData");
-  //   if (data !== null) {
-  //     return JSON.parse(data);
-  //   } else {
-  //     throw new Error("users is null");
-  //   }
-  // };
 
   const checkUser = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();

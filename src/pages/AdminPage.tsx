@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 //Components
 import { Header } from "../components/Header";
-import WorkoutList from "../components/ShowWorkout";
 import AddWorkout from "../components/AddWorkout";
 import {Users} from '../db/UsersDB';
 
+// types
+import { IWorkout } from "../types/InterfaceAndType";
+
+// styles
 import "../styles/workout.css";
-import { IWorkout, TWorkoutActivity } from "../types/WorkoutType";
 
 interface UserWorkouts {
   username: string;
@@ -81,7 +83,7 @@ const AdminPage = ({ setProducts, products }: AdminPageProps) => {
         <h3>Lägga till ett pass:</h3>
         <AddWorkout products={products} setProducts={setProducts} />
         <div className="workoutlist-container">
-          {products.map((product: any) => {
+          {products.map((product) => {
             return (
               <div className="workoutlist-item" key={product.id}>
                 <h4> {product.name}</h4>

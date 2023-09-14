@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import "../styles/workout.css";
 import { IoIosArrowDown } from "react-icons/io";
-// import { IUser } from "../types/UserType";
-import { Users } from "../db/UsersDB";
 //Components
 import { getUsername } from "../util/user";
-// import ShowWorkout from "../components/ShowWorkout"
-// import { Workouts } from "../db/Workouts";
 import WorkoutList from "../components/ShowWorkout";
-import { IWorkout } from "../types/WorkoutType";
 
+// types
+import { IWorkout } from "../types/InterfaceAndType";
 
+interface UserPageProps {
+  products: IWorkout[];
+  setProducts: (newProducts: IWorkout[]) => void;
+}
 
-const UserPage = ({ setProducts, products }: any) => {
+const UserPage = ({ setProducts, products }: UserPageProps) => {
   const [selectedDay, setSelectedDay] = useState<Date>(new Date());
   const [selectedWorkout, setSelectedWorkout] = useState<string[]>([]);
   const [localStorageData, setLocalStorageData] = useState<string[]>([]);
@@ -29,21 +30,21 @@ const UserPage = ({ setProducts, products }: any) => {
       // Split the saved data by commas to create an array
       const workoutsArray = savedWorkouts.split(",");
       setLocalStorageData(workoutsArray);
-      setWorkoutCount(workoutsArray.length)
-      
+      setWorkoutCount(workoutsArray.length) 
     }
-  }, [selectedWorkout]);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem(`${getUsername()} workouts`)) {
-  //     console.log(localStorage.getItem(`${getUsername()} workouts`));
-  //   }
-  // }, []);
+    
+  }, [selectedWorkout]);
+  
 
   const handledWorkoutChange = (workoutName: string) => {
     setSelectedWorkout([...selectedWorkout, workoutName]);
     saveToLocalStorage(workoutName);
-    
+
+    if (workoutCount >= 1) {
+      
+      console.log("you have booked this already!");
+    }
   };
 
   const saveToLocalStorage = (workout: string) => {
@@ -70,7 +71,6 @@ const UserPage = ({ setProducts, products }: any) => {
                 workout.time
               }`
             );
-           
           }}>
           Boka
         </button>
@@ -105,15 +105,6 @@ const UserPage = ({ setProducts, products }: any) => {
         </div>
       </div>
       <div>
-        {/* {
-          visible && <ul className="selected-workout">
-          {localStorageData.map((item, index) => (
-            <li className="selected-list" key={index}>
-              {item}
-            </li>
-          ))}
-        </ul>
-        } */}
       </div>
       <WorkoutList
         products={products}
